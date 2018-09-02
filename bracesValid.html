@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Braces Valid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        // Given a string, consists of braces: curly {}, brackets [], parentheses (), verify that the braces are closedd before the outer set closes.
+
+        // Write a function to valid braces of a given string
+        function bracesValid(b){
+            if(b){
+            // Turn the given string into an array
+                strArr = b.split("");
+            // create an empty array to keep track of the braces
+                var braceArr = [];
+                var len_braceArr = braceArr.length
+                console.log("len_braceArr: "+len_braceArr)
+                // var braces ={
+                //     "curly":"{",
+                //     "bracket":"[",
+                //     "par":"("
+                // }
+            //loop through the array to find the open braces and add to the array of brace array
+                for(var i = 0; i < b.length; i++){
+            //for each of the strArr, if the element is an open braces, add to array
+                    console.log('At index i = '+ i + '\nThis is b[i]', b[i])
+                    if(b[i] === "{" || b[i ] === "[" || b[i] === "("){
+                        braceArr.push(b[i]);
+                        len_braceArr = braceArr.length;
+                        console.log("braceArr: ", braceArr);
+            //if the element is a close brace, check if it matches with its open brace in the brace array
+                    }else if(b[i] === "}" || b[i] === "]" || b[i] === ")"){
+            // if it matches, pop the brace array
+                        console.log("i: "+i+", b[i]: "+b[i]+", len_braceArr: "+len_braceArr+", braceArr[len_braceArr-1]: "+braceArr[len_braceArr-1]);
+                        if(b[i] === "}" && braceArr[len_braceArr-1] === "{"){
+                            braceArr.pop();
+                            len_braceArr = braceArr.length;
+                        }else if(b[i] === "]" && braceArr[len_braceArr-1] === "["){
+                            braceArr.pop()
+                            len_braceArr = braceArr.length;
+                        }else if(b[i] === ")" && braceArr[len_braceArr-1] === "("){
+                            braceArr.pop()
+                            len_braceArr = braceArr.length;
+                        } else{ 
+                            console.log("braceArr: "+ braceArr)
+                    //, otherwise, unmatched brace found, return false
+                            return console.log('Unmatched/incorrect close brace found');
+                        }
+                    }
+                }
+                if(braceArr.length > 0){
+                    return console.log("Unmatched/incorrect open brace found")
+                }else{
+                    return console.log("True, this is a valid braces")
+                }
+            }else{
+                return console.log("Not a valid parameter, parameter cannot be null")
+            }
+            
+        }
+        // count the string, the string count has to be even, otherwise the braces are not all in sets, return false.
+        console.log("([]) should be working: ");
+        bracesValid("([])");
+        console.log("\'\' should be wrong: ");
+        bracesValid("");
+        console.log("\"{{()}}[]\" should be correct: ");
+        bracesValid("{{()}}[]");
+        console.log("\"{(})\" should be wrong");
+        bracesValid("{(})");
+        var test1 = ""
+    </script>
+</body>
+</html>
