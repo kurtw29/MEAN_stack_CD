@@ -11,6 +11,8 @@
     <script>
         // Create function called "fizzbuzz" that accepts pareameter "n"
         function fizzbuzz(n){
+            // Create a variable to keep track of each loop iteration; to be console logged all togther
+            var output = ''
         // if parametor is not a positive number, return error/null
             // if(Number.isInteger(n) && n > 0){
             if(typeof(n)=='number' && n > 0 ){
@@ -29,12 +31,19 @@
                     else if(i % 5 == 0 && i % 3 != 0){
                         out = "Buzz";
                     }
-                    console.log(out);
+                    // console.log(out);
+                    if( i == n){
+                        output = output+"and "+out+"."
+                    } else{
+                        output = output+out+",  "
+                    }
                 }
-                return "Done with this fizzbuzz("+n+") function";
+                // return "Done with this fizzbuzz("+n+") function";
             } else{
-            return "Paramenter must be a postive number"
+            // return "Paramenter must be a postive number"
+            output = output+"Paramenter must be a postive number, "
             }
+            return output
         };
         console.log("fizzbuzz(15)", fizzbuzz(15));
         console.log("fizzbuzz(-1)", fizzbuzz(-1));
