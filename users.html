@@ -60,6 +60,25 @@
             }
             // append/concate each of the user information to the string variable "output", we use "\n" to separate out the lines
             output = output+users[i].fname+" "+users[i].lname+" knows the following languages: "+know+"\n";
+            // create a string variable, "interests" to combine the user's space_interest information together.
+            var space_interests = "";
+            var home_interests = "";
+            // create a for-loop to list out all the space interest for users[i]
+            for (sp in users[i].interests.space){
+                space_interests = space_interests+users[i].interests.space[sp]+", "
+            }
+            // do the same for-loop for home_interests of users[i]
+            for (hm in users[i].interests.home){
+                // if this is the last home_interests from the list, do special string format for better formating.
+                if(hm == users[i].interests.home.length-1){
+                    home_interests = home_interests+"and, "+users[i].interests.home[hm]+"."
+                }else{
+                    home_interests = home_interests+users[i].interests.home[hm]+", "
+                }
+            }
+            // combine space_interest & home_interests together into one string variable, "combined_interests" for better formating
+            var combined_interests = space_interests+home_interests
+            output = output+users[i].fname+" "+users[i].lname+" is also interested in: "+combined_interests
         }
         //return the string variable "output" that lists all the users by first_name, last_name, and languages each user knows.
         return output;
