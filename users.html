@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        // This is the given "users" object for the assignment
+        users = [
+  {
+    fname: "Kermit",
+    lname: "the Frog",
+    languages: ["Python", "JavaScript", "C#", "HTML", "CSS", "SQL"],
+    interests: {
+      music: ["guitar", "flute"],
+      dance: ["tap", "salsa"],
+      television: ["Black Mirror", "Stranger Things"]
+    }
+  },
+  {
+    fname: "Winnie",
+    lname: "the Pooh",
+    languages: ["Python", "Swift", "Java"],
+    interests: {
+      food: ["honey", "honeycomb"],
+      flowers: ["honeysuckle"],
+      mysteries: ["Heffalumps"]
+    }
+  },
+  {
+    fname: "Arthur",
+    lname: "Dent",
+    languages: ["JavaScript", "HTML", "Go"],
+    interests: {
+      space: ["stars", "planets", "improbability"],
+      home: ["tea", "yellow bulldozers"]
+    }
+  }
+]
+
+    //write a function "userLanguages"
+    function userLanguages(users){
+        // create a string variable "output" for better formating the return of the function
+        var output = ""
+        // go through each user in the Users object to extract user information
+        for(i in users){
+            // create a string output variable "know" for better formating
+            var know = "";
+            // for-loop to list out all the languages the that user[i] knows.
+            for(k in users[i].languages){
+                // for better formating, if we reach the last languages in the list, we change the way we package the string variable "know".
+                if( k == users[i].languages.length-1){
+                    know = know+"and "+users[i].languages[k]+"."
+                }else{
+                know = know+users[i].languages[k]+", "
+                }
+            }
+            // append/concate each of the user information to the string variable "output", we use "\n" to separate out the lines
+            output = output+users[i].fname+" "+users[i].lname+" knows the following languages: "+know+"\n";
+        }
+        //return the string variable "output" that lists all the users by first_name, last_name, and languages each user knows.
+        return output;
+    }
+    // call the function userLanguages(), pass the "users" object, and console.log whatever the function returns.
+    console.log(userLanguages(users));
+    </script>
+</body>
+</html>
