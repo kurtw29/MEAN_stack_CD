@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Coin Change</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        // Write a function that given a number of US cents, returns the optimal confiuration changes: dollars, quarters, dimes, nickels, and pennies
+        function coinChange(num){
+            console.log("The given paramenter (num): ", num)
+            // if "num" is a US money object, then convert translate the object into the appropriate number and performance the original coinChange algorithm:
+
+            if(typeof(num) == "object"){
+                console.log("recognize parameter is an object")
+                // create a "cents" variable to convert objects into appropriate units for coinChange()
+                var cents = 0;
+                // if there's "dollars", "quarters",.., "pennies" in objects, convert them into cents and add them up accordingly.
+                if(num.dollars || num.quarters || num.dimes || num.nickels || num.pennies){
+                    if(num['dollars']){
+                        cents += 100*parseInt(num['dollars'])
+                    }
+                    if(num['quarters']){
+                        cents += 25*parseInt(num['quarters'])
+                    }
+                    if(num['dimes']){
+                        cents += 10*parseInt(num['dimes'])
+                    }
+                    if(num['nickels']){
+                        cents += 5*parseInt(num['nickels'])
+                    }
+                    if(num['pennies']){
+                        cents += 1*parseInt(num['pennies'])
+                    }
+                    console.log("cents: ", cents)
+
+                    //convert "num" into "cents" for coinChange() calculation
+                    num = cents
+                    console.log("convereted 'num' into 'cents', num: ", num);
+                }
+            }else if(typeof(num) == "number"){
+                
+                // dollars = " 'num' cents" divided by "100 cents", truncate the decimal to find the total dollars
+                var dollars = num/100 | 0;
+                num = num%100;
+                // use modules to take the reminder and applies to quarter "25 cents"
+                var quarters = num/25 | 0;
+                num = num%25;
+                // use modules to take the reminders (after quarters) and applies to dimes "10 cents"
+                var dimes = num/10 | 0;
+                num = num%10;
+                // use modules to take the reminders (after dimes) and applies to nickels "5 cents"
+                var nickels = num/5 | 0;
+                // use modules to take the reminders (after nickels) and applies to pennis "1 cents"
+                var pennies = num%5;
+
+                var changes = {};
+                if(dollars){
+                    changes['dollars'] = dollars;
+                };
+                if(quarters){
+                    changes['quarters'] = quarters;
+                };
+                if(dimes){
+                    changes['dimes'] = dimes;
+                };
+                if(nickels){
+                    changes['nickels'] = nickels;
+                };
+                if(pennies){
+                    changes['pennies'] = pennies;
+                };
+            return changes
+            } else{
+                return "invalid parameter"
+            }
+        }
+        console.log("coinChange(193): ", coinChange(193));
+        console.log("coinChange(312): ", coinChange(312));
+        console.log("coinChange(78): ", coinChange(78));
+        console.log("coinChange({dollars: 3, quarters: 2, nickels: 1})", coinChange({dollars: 3, quarters: 2, nickels: 1}));
+    </script>
+</body>
+</html>
