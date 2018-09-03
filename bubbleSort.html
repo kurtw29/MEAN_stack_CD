@@ -9,58 +9,48 @@
     <script>
         //Write a function for bubbleSort that takes an array
         function bubbleSort(arr){
-            //implement a "fast exit" - detect whether array is already sorted
-            // check if the last index value is the max, then the 2nd-last index to be the 2nd max
-            function fastExit(arr){
-                // create a loop and check whether the last index value (marker) is greater than or equal to all other index values
-                // if it is, move on to the next loop - check the 2nd-last value is >= all other values besides the last-value, and repeat until loops through index 0 and return array.
-                for(var marker = arr.length-1; marker >= 0; marker--){
-                    // create another loop to check the selected index against all other values in the array
-                    for( var l = marker-1; l >= 0; l--){
-                    // if the marker value's not larger/equal to all other values, break the loop and set marker for the bubbleSort().
-                    // otherwise, finish loop and move on to check the next marker at the outter loop.
-                        if( arr[marker] < arr[l]){
-                            console.log("Uh-oh, this array is not sorted, current marker: ", marker)
-                            return marker 
-                        }
-                    }
-                }
-                console.log("Finished outter loop completely, marker is: "+ marker)
-                // if the loop is finished, marker should be equals to "-1", so we re-define marker to "0"
-                marker = marker+1
-                console.log("Re-define marker to be: "+ marker)
-                return marker
-            }
-            // run the fastExit() function to get the "marker" variable that tells us where we should start the bubbleSort algorithm
-            var marker = fastExit(arr)
-            // Create a loop as a marker for when to stop swapping
+            console.log("This is our given array: ", arr)
+            // Create a marker for the nested loop (see later in the 2nd for-loop) to know when to stop swapping
+            var marker = arr.length-1;
+            // create a swap_num to count how many times the swap took place within one outer for-loop.
+            var swap_num = 0;
                 //(every loop, the largest will be at the last index, then the 2nd largest at the 2nd to last -> 
                     //first loop stops at the last index,
                     //2nd loop stops at [arr.length-2],
                     //3rd loops stops at [arr.length-3], etc.)
                     // loops stops when arrive at arr[1]
             // for(var i = arr.length-1; i >= 1; i--){
-            // ****We implemented fastExit() with a marker, so the loop's "i" now starts at "marker" instead of "arr.length-1"
             for(var i = marker; i >= 1; i--){
                 console.log("Where did we start this outer loops of bubbleSort() for this array", arr," ? \nFor i= ", i)
+                // implment fastExit by counting how many times we swap (variable swap_num), starting at 0 at the beginning of the inner for-loop.
+                swap_num = 0
                 //Loop through the arr starting with 2nd index, and compare with a previous index until we reaches marker (i.e. the loop cannot pass the marker)
                 for(var j = 1; j <= i; j++){
                     if(arr[j] < arr[j-1]){
+                        //there's a swap, so add 1 to the "swap_num"
+                        swap_num++
+                        console.log("We added a 'swap_num', it is now swap_num: ", swap_num)
                         // The swap to make the larger value to be at the right (higher index)
                         var temp = arr[j-1];
                         arr[j-1] = arr[j];
                         arr[j] = temp;
                     }
+                }
+                // If we didn't do any swap, then it means the array is already sorted, and we can return the function. Otherwise, we continue to the next marker's for-loop and start check for swapping again.
+                console.log("Completed inner-for-loop, swap_num: ", swap_num)
+                if(swap_num == 0){
+                    console.log("There's zero swap_num. See- swap_num: ", swap_num);
+                    return arr;
+                }
                 // If max > arr[i] then, swap arr[i] and max, else, do nothing and continue the loop until 
                 }
                 // once loop is finished, repeat with max = arr[1] (2nd index)
-            }
-            //
             return arr
-        }
-        console.log("bubbleSort([1,2,3,4,5]: "+ bubbleSort([1,2,3,4,5]) );
-        console.log("bubbleSort([5,6,4,3,1]: "+ bubbleSort([5,6,4,3,1]) );
-        console.log("bubbleSort([5,6,4,11,12]: "+ bubbleSort([5,6,4,11,12]) );
+            }
+        console.log("bubbleSort([1]): "+ bubbleSort([1]) );
+        console.log("bubbleSort([1,2,3,4,5]): "+ bubbleSort([1,2,3,4,5]) );
+        console.log("bubbleSort([5,6,4,3,1]): "+ bubbleSort([5,6,4,3,1]) );
+        console.log("bubbleSort([5,6,4,11,12]): "+ bubbleSort([5,6,4,11,12]) );
 
     </script>
 </body>
