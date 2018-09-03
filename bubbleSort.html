@@ -6,6 +6,82 @@
     <title>Bubble Sort</title>
 </head>
 <body>
+        <br>
+        <p> function #1 </p>
+        <pre><code>
+        &lt;script&gt;
+        function printArray(arr){for(var i=0;
+        i&ltarr.length; i++){console.log(arr[i]);}}
+        console.log("function findNth(arr) is O(n)")
+        &lt;/script&gt;
+        </code></pre>
+        <p>function printArray(arr) is O(n)")</p>
+
+        
+        <br>
+        <p> function #1 </p>
+        <pre><code>
+        &lt;script&gt;
+        function printArray(arr){for(var i=0;
+        i&ltarr.length; i++){console.log(arr[i]);}}
+        &lt;/script&gt;
+        </code></pre>
+        <p>function printArray(arr) is O(n)")</p>
+
+        
+        <br>
+        <p> function #2 findNth </p>
+        <pre><code>
+        &lt;script&gt;
+        function printArray(arr, n){
+            console.log(arr[n]);
+        }
+        &lt;/script&gt;
+        </code></pre>
+        <p>function findNth(arr, n) is O(1)")</p>
+
+        
+        <br>
+        <p> function #3 halving </p>
+        <pre><code>
+        &lt;script&gt;
+        function halving(n){
+            var count = 0;
+            while(n &gt;1){
+                n = n/2;
+                count++;
+            }
+            return count;
+        &lt;/script&gt;
+        </code></pre>
+        <p>function havling(n) is O(log2(n))")</p>
+
+        
+        <br>
+        <p> function #4 identifyMatrix(n) </p>
+        <pre><code>
+        &lt;script&gt;
+        function identifyMatrix(n){
+            var matrix = [];
+            for(var i=0; i &lt; n; i++ ){
+                var row = [];
+                for(var j=0; j &lt; n; j++){
+                    if(j == i){
+                        row.push(1);
+                    }
+                    else{
+                        row.push(0);
+                    }
+                }
+                matrix.push(row);
+            }
+            return matrix;
+        }
+        &lt;/script&gt;
+        </code></pre>
+        <p>function identifyMatrix(n) is O(n^2)")</p>
+
+        
     <script>
         //Write a function for bubbleSort that takes an array
         function bubbleSort(arr){
@@ -51,7 +127,6 @@
         console.log("bubbleSort([1,2,3,4,5]): "+ bubbleSort([1,2,3,4,5]) );
         console.log("bubbleSort([5,6,4,3,1]): "+ bubbleSort([5,6,4,3,1]) );
         console.log("bubbleSort([5,6,4,11,12]): "+ bubbleSort([5,6,4,11,12]) );
-
-    </script>
+</script>
 </body>
 </html>
