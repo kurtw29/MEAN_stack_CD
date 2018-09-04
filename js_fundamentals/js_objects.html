@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Objects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        /********** Challenge 1 ************/
+        let students = [
+            {name: 'Remy', cohort: 'Jan'},
+            {name: 'Genevieve', cohort: 'March'},
+            {name: 'Chuck', cohort: 'Jan'},
+            {name: 'Osmund', cohort: 'June'},
+            {name: 'Nikki', cohort: 'June'},
+            {name: 'Boris', cohort: 'June'}
+        ];
+
+        //Write function that accepts array of students and print all of students' name and cohort
+        function info(arr){
+            for(i in arr){
+                console.log("Name: "+students[i].name+", Cohort: "+students[i].cohort)
+            }
+        }
+    info(students);
+
+
+    </script>
+
+</body>
+</html>
