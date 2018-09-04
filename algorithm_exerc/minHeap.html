@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>min Heap</title>
+</head>
+<body>
+    <script>
+        //create min Heap function
+        function addToHeap(Heap, val){
+            if(Heap.length == 0){
+                Heap[1] = val;
+            } else{
+                Heap.push(val);
+                var c = Heap.length-1;
+                var p = Math.trunc(c/2);
+                while( p >=1 && Heap[p] > Heap[c]){
+                    var temp = Heap[c];
+                    Heap[c] = Heap[p];
+                    Heap[p] = temp;
+                    c = p
+                    p = Math.trunc(c/2);
+                }
+            }
+            return Heap;        
+        }
+            var arr = []
+            console.log(addToHeap(arr,12));
+            arr = [undefined, 1, 3, 5, 32, 12, 10, 8]
+            console.log(addToHeap(arr, 2));
+            console.log(addToHeap(arr, 50));
+    </script>
+    
+</body>
+</html>
