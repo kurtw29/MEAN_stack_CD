@@ -120,8 +120,38 @@
         heffalumps.west = eeyore;
         eeyore.east = heffalumps;
 
-        var direction =document.getElementsByTagName("INPUT");
-        console.log(direction)
+        //Create a simple moving game in the map created above
+
+        //create a player, starting at tigger's location
+        var player = {location: tigger, name:'Player1'}
+        // define a global variable for current player's location
+        var current_location = player.location
+        // Create a function "move", so when type "north, south, west, or east", it will change player's location in the map.
+        function move(dir){
+            //Show player's current position
+            console.log(player.name+" is currently at: "+current_location.character+"'s home.");
+            //console.log player's move
+            console.log(player.name+" move("+dir+").")
+            //move the player's location, call new location "arrival"
+            var arrival = current_location[dir]  //notice we use bracket notation instead of dot notation
+            // DOT notation CANNOT TAKE a variable, it will search for "dir" in "player.location".
+            if(arrival){
+                //update player's current location to arrival:
+                current_location = arrival;
+                console.log(player.name+" has moved to: "+arrival.character+"'s home.");
+                // return console.log(player.name+" has moved to: "+arrival.character+"'s home.");
+            }else{
+                console.log(player.name+" cannot go that way.");
+                // return console.log(player.name+" cannot go that way.");
+            }
+        }
+        move("north");
+        move("north");
+        move("east");
+        move("east");
+        move("east");
+        move("west");
+
     </script>
 </body>
 </html>
