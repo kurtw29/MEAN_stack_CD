@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Objects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        /********** Challenge 1 ************/
+        let students = [
+            {name: 'Remy', cohort: 'Jan'},
+            {name: 'Genevieve', cohort: 'March'},
+            {name: 'Chuck', cohort: 'Jan'},
+            {name: 'Osmund', cohort: 'June'},
+            {name: 'Nikki', cohort: 'June'},
+            {name: 'Boris', cohort: 'June'}
+        ];
+
+        //Write function that accepts array of students and print all of students' name and cohort
+        function info(arr){
+            for(i in arr){
+                console.log("Name: "+students[i].name+", Cohort: "+students[i].cohort)
+            }
+        }
+    // info(students);
+
+        /********** Challenge 2 ************/
+        let users = {
+            employees: [
+                {'first_name':  'Miguel', 'last_name' : 'Jones'},
+                {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+                {'first_name' : 'Nora', 'last_name' : 'Lu'},
+                {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+            ],
+            managers: [
+            {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+            {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+            ]
+        };
+
+        // Write a function that accepts object of users divided into employees & managers
+        function staff_info(arr){
+            console.log("EMPLOYEE");
+            for(i in  users.employees){
+                let lastName = users.employees[i].last_name;
+                let firstName = users.employees[i].first_name;
+                let counting_name = users.employees[i].last_name.length+users.employees[i].first_name.length
+                let id = parseInt(i)+1
+                console.log(id+" - "+lastName+", "+firstName+" - "+counting_name)
+            }
+            console.log("MANAGERS");
+            for(j in users.managers){
+                let lastName = users.managers[j].last_name;
+                let firstName = users.managers[j].first_name;
+                let counting_name = users.managers[j].last_name.length+users.managers[j].first_name.length
+                let id = parseInt(j)+1
+                console.log(id+" - "+lastName+", "+firstName+" - "+counting_name)
+            }
+        }
+        staff_info(users);
+
+
+    </script>
+
+</body>
+</html>

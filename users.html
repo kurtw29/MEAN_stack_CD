@@ -60,9 +60,18 @@
             }
             // append/concate each of the user information to the string variable "output", we use "\n" to separate out the lines
             output = output+users[i].fname+" "+users[i].lname+" knows the following languages: "+know+"\n";
+
+            // BONUS ASSIGNMENT - include user's interests
+
             // create a string variable, "user_interests" to combine the user's interest information together.
             var user_interests = users[i].fname+" "+users[i].lname+" is also interested in: ";
-            // create a for-loop to list out all the space interest for users[i]
+            // create a for-loop to list out all the interest topics for users[i]
+            var interest_topics =[];
+            for(j in users[i].interests){
+                // combine (concat) all the interest topic arrays into a single array
+                interest_topics.concat(users[i].interests) 
+                console.log(interest_topics)
+            }
             // for (topic in users[i].interests){
             //     for( var interest_items in users[i].interests[topic] ){
             //         // If this is the last interest item, then ends with a period
