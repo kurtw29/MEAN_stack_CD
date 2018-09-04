@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hundred Acres Wood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h2>Hundred Acre Wood Map - Where will you go?</h2>
+    <ul>
+        <li>Type the direction "north", "south", "east", or "west" in the input area</li>
+        <li>You can chain the moving direction by using "." eg) north.south --> go "north" and then go "south"</li>
+        <li>Another example: north.south.west --> go "north" then "south" then "west"</li>
+    <h4> Have fun!</h4>
+    <hr>
+    </ul>
+    <ul><form>
+        <li>Starting from Tigger's home: 
+            <input type='text' name='tigger' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Winnie the Pooh's home: 
+            <input type='text' name='pooh' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Piglet's home: 
+            <input type='text' name='piglet' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Bees's home: 
+            <input type='text' name='bees' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Gopher's home: 
+            <input type='text' name='gopher' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Rabbit's home: 
+            <input type='text' name='rabbit' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Christopher Robin's home: 
+            <input type='text' name='robin' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Owl's home: 
+            <input type='text' name='owl' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Kanga's home: 
+            <input type='text' name='kanga' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Eeyore's home: 
+            <input type='text' name='eeyore' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+        <li>Starting from Heffalumps's home: 
+            <input type='text' name='heffalumps' placeholder="Type here: north, south, east, or west.." />
+            <br>
+            <p class='arrival'>Arrived at: <span class='arrival'></span>.</p>
+        </li>
+    </ul></form>
+    <script>
+        // Create the map of the Hundred Acre Wood
+        var tigger = { character: "Tigger" }; // start with just the character attribute
+
+        var pooh = { character: "Winnie the Pooh" };
+        tigger.north = pooh; // add more attributes, where we are actually storing the memory location for the other object
+        pooh.south = tigger;
+
+        var piglet = { character: "Piglet"};        // create Piglet's home object with just the character attribute
+        piglet.east = tigger.north;          // Piglet's east attribute is Tigger's north attribute, which is a memory address
+        tigger.north.west = piglet;          // Follow Tigger's north attribute to a location in memory and Assign that object's west attribute to piglet
+
+        var bees = { character: "Bees"};
+        pooh.east = bees;
+        bees.west = pooh;
+
+        var gopher = {character: "Gopher"};
+        
+        var rabbit = {character: "Rabbit"};
+        rabbit.east = gopher;
+        gopher.west = rabbit;
+        rabbit.south = bees;
+        bees.north = rabbit;
+
+        var robin = {character: "Christopher Robin"};
+        robin.east = rabbit;
+        rabbit.west = robin;
+        robin.south = pooh;
+        pooh.north = robin;
+
+        var owl = {character: "Owl"};
+        owl.east = robin;
+        robin.west = owl;
+        owl.south = piglet;
+        piglet.north = owl;
+
+        var kanga = {character: "kanga"};
+        kanga.south = robin;
+        robin.north = kanga;
+        
+        var eeyore = {character: "Eeyore"};
+        eeyore.south = kanga;
+        kanga.north = eeyore;
+
+        var heffalumps = {character: "Heffalumps"};
+        heffalumps.west = eeyore;
+        eeyore.east = heffalumps;
+
+        var direction =document.getElementsByTagName("INPUT");
+        console.log(direction)
+    </script>
+</body>
+</html>
