@@ -77,7 +77,7 @@
         var tigger = { 
             character: "Tigger",
             greet: function(){
-                console.log("Tigger: They'rrrr grrrrreeeeaatttt! oh wait, this is a different tiger.")
+                console.log("Tigger: They'rrrr grrrrreeeeaatttt! oh wait, I'm a different tiger.")
             }
         }; // start with just the character attribute
         // Create a greet object with anomyous function (we can call the function by pointing "tigger.greet")
@@ -86,7 +86,7 @@
         var pooh = { 
             character: "Winnie the Pooh",
             greet: function(){
-                console.log("pooh: Honey...please");
+                console.log("Pooh: Honey...please");
             } 
         };
         tigger.north = pooh; // add more attributes, where we are actually storing the memory location for the other object
@@ -153,7 +153,7 @@
         piglet.north = owl;
 
         var kanga = {
-            character: "kanga",
+            character: "Kanga",
             greet: function(){
                 console.log("Kanga: hi dear. you hungry?")
             }
@@ -182,7 +182,48 @@
         //Create a simple moving game in the map created above
 
         //create a player, starting at tigger's location
-        var player = {location: tigger, name:'Player1'}
+        var player = {
+            location: tigger, name:'Player1',
+            // keep track whether player has honey or not
+            honey: false
+        }
+
+        // create function pickup() that is invok at "bees" location and turn "player.honey" status to True
+        function pickup(where){
+            if(where == bees){
+                player.honey = true;
+                console.log(player.name+" has picked up honey")
+            }else{
+                console.log("There's no honey at this location")
+            }
+        }
+
+        // create function mission() that randomly selects a location (other than "bee") to designate where player needs to deliver the honey
+        function mission(){
+            //generate an array of locations to pick from
+            var honeyEaters = [tigger, pooh, piglet, gopher, rabbit, robin, owl, kanga, eeyore, heffalumps]
+            // using Math.round() to get an integer for the index of the array, then use Math.random() to pick a between [0 to 1], and times it by location array's length to get a random index of the array honeyEater[]. We call this random location "honeyOrder"
+            honeyOrder = honeyEaters[Math.round(Math.random()*honeyEaters.length)]      //since we didn't code "var" to declare the variable "honeyOrder" inside the function, "honeyOrder" is now a global variable.
+            return console.log("\""+honeyOrder.character+"\""+" ordered some honey, please deliver honey from Bees to "+honeyOrder.character);
+        }
+        // direct the mission at the beginning of the game/log.
+        mission();
+
+        // create a function drop()
+        function drop(where){
+            //message "player successfully delivered honey" if invoked drop() at mission()'s location (i.e. "honeyOrder"). 
+            if( where == honeyOrder && player.honey == true){
+                player.honey = false;
+                console.log("Successfully delivered honey! Good job!")
+            } else if(player.honey == false){
+                console.log("Unable to deliver honey. You do not have any honey.\n You can get honey from 'Bees'");
+            } else if(where != honeyOrder){
+                console.log(where.character+" did not place an order for honey delivery. \n Please deliver honey to"+honeyOrder.character+", who is asking for honey delivery")
+            }
+            // player no longer has honey
+            // log error message if invoking drop() when player does not have honey OR not at the mission()'s location
+        }
+
         // define a global variable for current player's location
         var current_location = player.location
         // Create a function "move", so when type "north, south, west, or east", it will change player's location in the map.
@@ -199,13 +240,17 @@
                 current_location = arrival;
                 console.log(player.name+" has moved to: "+arrival.character+"'s home.");
                 arrival.greet();
+                pickup(current_location);
                 // return console.log(player.name+" has moved to: "+arrival.character+"'s home.");
+                drop(current_location);
             }else{
                 console.log(player.name+" cannot go that way.");
                 // return console.log(player.name+" cannot go that way.");
             }
         }
         move("north");
+        move("east");
+        move("west");
         move("north");
         move("east");
         move("east");
