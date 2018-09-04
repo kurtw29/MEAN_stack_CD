@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Hoisting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <p>
+        Re-arrange the code as the javascript would've interpreted and predict output
+    </p>
+    <script>
+        /** 1 **/
+        // console.log(hello);                                   
+        // var hello = 'world';                                 
+        var hello;
+        console.log(hello); //console: undefined
+        hello = 'world';
+
+        /** 2**/
+        // var needle = 'haystack';
+        // test();
+        // function test(){
+        //     var needle = 'magnet';
+        //     console.log(needle);
+        // }
+        var needle;
+        function test(){
+            var needle = 'magnet';
+            console.log(needle);
+        }
+        needle = 'haystack';
+        test();     //console: magnet
+
+
+        /** 3 **/
+        // var brendan = 'super cool';
+        // function print(){
+        //     brendan = 'only okay';
+        //     console.log(brendan);
+        // }
+        // console.log(brendan);
+
+        var brendan;
+        function print(){
+            brendance = 'only okay';
+            console.log(brendan);
+        }
+        brendan = 'super cool';
+        console.log(brendan)    //console: "super cool"
+
+        /** 4 **/
+        // var food = 'chicken';
+        // console.log(food);
+        // eat();
+        // function eat(){
+        //     food = 'half-chicken';
+        //     console.log(food);
+        //     var food = 'gone';
+        // }
+
+    var food;
+    food = 'chicken';
+    function eat(){
+        var food;
+        food = 'half-chicken';
+        console.log(food);
+        food = 'gone';
+    }
+    console.log(food);  //console: 'chicken'
+    eat()   //console: 'half-chicken'
+
+
+        /*** 5 ***/
+        // mean();
+        // console.log(food);
+        // var mean = function() {
+        //     food = "chicken";
+        //     console.log(food);
+        //     var food = "fish";
+        //     console.log(food);
+        // }
+        // console.log(food);
+
+        var mean;
+        mean();             //error mean is not a function
+        console.log(food);
+        mean = function(){
+            var food
+            food = "chicken";
+            console.log(food);
+            food = "fish";
+            console.log(food);
+        };
+        console.log(food);
+
+        /*** 6 ***/
+        // console.log(genre);
+        // var genre = "disco";
+        // rewind();
+        // function rewind() {
+        //     genre = "rock";
+        //     console.log(genre);
+        //     var genre = "r&b";
+        //     console.log(genre);
+        // }
+        // console.log(genre);
+
+        var genre;
+        function rewind(){
+            var genre;
+            genre = "rock";
+            console.log(genre);
+            genre = 'r&b'
+            console.log(genre);
+        }
+        console.log(genre); // console: undefine
+        genre= "disco"
+        rewind();           // console: "rock"
+                            // console: 'r&b'
+        console.log(genre); //console: 'disco'
+
+        /*** 7 ***/
+        // dojo = "san jose";
+        // console.log(dojo);
+        // learn();
+        // function learn() {
+        //     dojo = "seattle";
+        //     console.log(dojo);
+        //     var dojo = "burbank";
+        //     console.log(dojo);
+        // }
+        // console.log(dojo);
+
+        function learn(){
+            var dojo;
+            dojo = 'seattle';
+            console.log(dojo);
+            dojo = 'burbank';
+            console.log(dojo);
+        }
+        dojo = "san jose";
+        console.log(dojo);      //console: "san jose"
+        learn();                // console: "seattle", console: "burbank"
+        console.log(dojo);      // console: "san jose"
+
+        /*** 8 ***/
+        console.log(makeDojo("Chicago", 65));
+        console.log(makeDojo("Berkeley", 0));
+        function makeDojo(name, students){
+                const dojo = {};
+                dojo.name = name;
+                dojo.students = students;
+                if(dojo.students > 50){
+                    dojo.hiring = true;
+                }
+                else if(dojo.students <= 0){
+                    dojo = "closed for now";
+                }
+                return dojo;
+        }
+
+        function makeDojo(name, students){
+            const dojo = {};
+            dojo.name = name;
+            dojo.students = students;   //dojo is now {chicago, 65} 
+            if(dojo.students > 50){
+                dojo.hiring = true;     // dojo.hiring = true;
+            }
+            else if(dojo.students <= 0){
+                dojo = "closed for now";
+            }
+            return dojo;
+        }
+        console.log(makeDojo("Chicago", 65)); //console: true;
+        console.log(makeDojo("Berkeley", 0)); //console: true (error, cannot modify dojo.name, cannot modify dojo.student)
+
+        /** I was wrong, the console.log of the function makeDojo(Chicago..etc), returns the dojo as an object.
+        Nevertheless, the 2nd console is an error*/
+
+    </script>
+</body>
+</html>
