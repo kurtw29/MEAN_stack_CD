@@ -74,49 +74,108 @@
     </ul></form>
     <script>
         // Create the map of the Hundred Acre Wood
-        var tigger = { character: "Tigger" }; // start with just the character attribute
+        var tigger = { 
+            character: "Tigger",
+            greet: function(){
+                console.log("Tigger: They'rrrr grrrrreeeeaatttt! oh wait, this is a different tiger.")
+            }
+        }; // start with just the character attribute
+        // Create a greet object with anomyous function (we can call the function by pointing "tigger.greet")
+        
 
-        var pooh = { character: "Winnie the Pooh" };
+        var pooh = { 
+            character: "Winnie the Pooh",
+            greet: function(){
+                console.log("pooh: Honey...please");
+            } 
+        };
         tigger.north = pooh; // add more attributes, where we are actually storing the memory location for the other object
         pooh.south = tigger;
 
-        var piglet = { character: "Piglet"};        // create Piglet's home object with just the character attribute
+        var piglet = { 
+            character: "Piglet",
+            greet: function(){
+                console.log("Piglet: oh...uh..uh..hello? i..i...i...i'm Piglet")
+            }
+        };        // create Piglet's home object with just the character attribute
         piglet.east = tigger.north;          // Piglet's east attribute is Tigger's north attribute, which is a memory address
         tigger.north.west = piglet;          // Follow Tigger's north attribute to a location in memory and Assign that object's west attribute to piglet
+        
 
-        var bees = { character: "Bees"};
+        var bees = {
+            character: "Bees",
+            greet: function(){
+                console.log("Bees: Do you even know who I am? I'm bees")
+            }
+        };
         pooh.east = bees;
         bees.west = pooh;
-
-        var gopher = {character: "Gopher"};
         
-        var rabbit = {character: "Rabbit"};
+
+        var gopher = {
+            character: "Gopher",
+            greet: function(){
+                console.log("Gopher: ho ho ho, don't know gopher")
+            }
+        };
+        
+        var rabbit = {
+            character: "Rabbit",
+            greet: function(){
+                console.log("Rabbit: Greeting. My name is rabbit")
+            }
+        };
         rabbit.east = gopher;
         gopher.west = rabbit;
         rabbit.south = bees;
         bees.north = rabbit;
 
-        var robin = {character: "Christopher Robin"};
+        var robin = {
+            character: "Christopher Robin",
+            greet: function(){
+                console.log("Christopher Robin: Hi there. My name is Christopher. How are you?")
+            }
+        };
         robin.east = rabbit;
         rabbit.west = robin;
         robin.south = pooh;
         pooh.north = robin;
 
-        var owl = {character: "Owl"};
+        var owl = {
+            character: "Owl",
+            greet: function(){
+                console.log("Owl: ooo, oooooo, oooooo, my dear, you seem lost.")
+            }
+        };
         owl.east = robin;
         robin.west = owl;
         owl.south = piglet;
         piglet.north = owl;
 
-        var kanga = {character: "kanga"};
+        var kanga = {
+            character: "kanga",
+            greet: function(){
+                console.log("Kanga: hi dear. you hungry?")
+            }
+        };
         kanga.south = robin;
         robin.north = kanga;
         
-        var eeyore = {character: "Eeyore"};
+        var eeyore = {
+            character: "Eeyore",
+            greet: function(){
+                console.log("Eeyore: ohh..sad sad sad day. please don't go away")
+            }
+        };
         eeyore.south = kanga;
         kanga.north = eeyore;
 
-        var heffalumps = {character: "Heffalumps"};
+        var heffalumps = {
+            character: "Heffalumps",
+            greet: function(){
+                console.log("Heffalumps: I don't know who you are, but here you are.")
+            }
+        };
         heffalumps.west = eeyore;
         eeyore.east = heffalumps;
 
@@ -139,6 +198,7 @@
                 //update player's current location to arrival:
                 current_location = arrival;
                 console.log(player.name+" has moved to: "+arrival.character+"'s home.");
+                arrival.greet();
                 // return console.log(player.name+" has moved to: "+arrival.character+"'s home.");
             }else{
                 console.log(player.name+" cannot go that way.");
