@@ -16,14 +16,46 @@
             this.health = health;
             var speed = 3;
             var strength = 3;
-            self.sayName = function(){
-                console.log("My name is: "+self.name)
+            this.sayName = function(){
+                console.log("My name is: "+name)
             }
-            self.showStats = function(){
-                console.log('Name: '+self.name+", Health: "+self.health+", Speed: "+speed+", Strength: "+strength);
+            this.showStats = function(){
+                console.log('Name: '+name+", Health: "+health+", Speed: "+speed+", Strength: "+strength);
             }
-            self.drinkSake = function(){
-                self.health += 10;
+            this.drinkSake = function(){
+                this.health += 10;
+            }
+
+            this.punch = function(opp){
+                if(this instanceof Ninja){
+                    opp.health -= 5;
+                    console.log(opp.name+" was punched by "+name+" and lost 5 Health!")
+                }else{
+                    console.log("Only ninja can punch an opponent")
+                }
+            }
+
+            this.kick = function(opp){
+                // console.log("opp: "+opp+" ; attacker: "+this);
+                if(this instanceof Ninja){
+                    opp.health -= 15*strength;
+                    console.log(opp.name+" was kicked by "+name+" and lost "+15*strength+" Health!")
+                }else{
+                    console.log("Only ninja can kick an opponent.")
+                }
+            }
+        }
+        function other(name, health =100){
+            this.name = name;
+            this.health = health;
+            this.kick = function(opp){
+                // console.log("opp: "+opp+" ; attacker: "+this);
+                if(this instanceof Ninja){
+                    opp.health -= 15*strength;
+                    console.log(opp.name+" was kicked by "+name+" and lost "+15*strength+" Health!")
+                }else{
+                    console.log("Only ninja can kick an opponent, and \""+this.name+"\" is not a ninja.")
+                }
             }
         }
         var ninja1 = new Ninja("Hyabusa");
@@ -31,6 +63,16 @@
         // -> "My ninja name is Hyabusa!"
         ninja1.showStats();
         // -> "Name: Hayabusa, Health: 100, Speed: 3, Strength: 3"
+        var blueNinja = new Ninja("Goemon");
+        var redNinja = new Ninja("Bill Gates");
+        redNinja.punch(blueNinja);
+        // -> "Goemon was punched by Bill Gates and lost 5 Health!"
+        blueNinja.kick(redNinja);
+        // -> "Bill Gates was kicked by Goemon and lost 15 Health!"
+        // In this case, redNinja Bill Gates lost 15 health because blueNinja Goemon has 1 point of strength
+        var randomNinja = new other("unknonw");
+        randomNinja.kick(blueNinja);
+
 
     </script>
 
