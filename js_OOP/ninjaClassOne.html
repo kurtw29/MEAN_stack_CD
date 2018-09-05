@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ninja Class One</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <script>
+
+        function Ninja(name, health = 100){
+            var self = this;
+            self.name = name;
+            self.health = health;
+            self.speed = 3;
+            self.strength = 3;
+            self.sayName = function(){
+                console.log("My name is: "+self.name)
+            }
+            self.showStats = function(){
+                console.log('Name: '+self.name+", Health: "+self.health+", Speed: "+self.speed+", Strength: "+self.strength);
+            }
+            self.drinkSake = function(){
+                self.health += 10;
+            }
+        }
+        var ninja1 = new Ninja("Hyabusa");
+        ninja1.sayName();
+        // -> "My ninja name is Hyabusa!"
+        ninja1.showStats();
+        // -> "Name: Hayabusa, Health: 100, Speed: 3, Strength: 3"
+
+    </script>
+
+    
+</body>
+</html>
