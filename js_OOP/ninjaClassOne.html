@@ -20,7 +20,7 @@
                 console.log("My name is: "+name)
             }
             this.showStats = function(){
-                console.log('Name: '+name+", Health: "+health+", Speed: "+speed+", Strength: "+strength);
+                console.log('Name: '+name+", Health: "+this.health+", Speed: "+speed+", Strength: "+strength);
             }
             this.drinkSake = function(){
                 this.health += 10;
@@ -50,7 +50,7 @@
             this.health = health;
             this.kick = function(opp){
                 // console.log("opp: "+opp+" ; attacker: "+this);
-                if(this instanceof Ninja){
+                if(this instanceof Ninja){      //checking "this" via "instanceof" "object constructor", true if, "this" is an instance from "Ninja" object constrquctor. false - otherwise
                     opp.health -= 15*strength;
                     console.log(opp.name+" was kicked by "+name+" and lost "+15*strength+" Health!")
                 }else{
@@ -65,8 +65,10 @@
         // -> "Name: Hayabusa, Health: 100, Speed: 3, Strength: 3"
         var blueNinja = new Ninja("Goemon");
         var redNinja = new Ninja("Bill Gates");
+        blueNinja.showStats();
         redNinja.punch(blueNinja);
         // -> "Goemon was punched by Bill Gates and lost 5 Health!"
+        blueNinja.showStats();
         blueNinja.kick(redNinja);
         // -> "Bill Gates was kicked by Goemon and lost 15 Health!"
         // In this case, redNinja Bill Gates lost 15 health because blueNinja Goemon has 1 point of strength

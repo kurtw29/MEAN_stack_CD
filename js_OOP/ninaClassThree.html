@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        // use ES6 classes for the Ninja Assignment:
+
+        class Ninja{
+            constructor(name, health=100, speed=3, strength=3){
+            this.name = name;
+            this.health = health;
+            this.speed = speed;
+            this.strength = strength;
+            }
+
+            sayName(){
+                console.log(`My name is ${this.name}`)
+            }
+
+            showStats(){
+                console.log(`Name: ${this.name}, Health: ${this.health}, Speed: ${this.speed}, Strength: ${this.strength}`)
+            }
+
+            drinkSake(){
+                this.health +=10;
+                console.log(`${this.name} gained +10 health. Health:${this.health}`)
+            }
+            punch(opp){
+                if(this instanceof Ninja){
+                    opp.health -= 5;
+                    console.log(`${opp.name}+" was punched by "${this.name}" and lost 5 Health!`)
+                }else{
+                    console.log(`Only Ninja can punch an opponent`);
+                }
+            }
+            kick(opp){
+                if(this instanceof Ninja){
+                    opp.health -= 15*this.strength;
+                    console.log(`${opp.name} was kicked by ${this.name} and lost ${15*this.strength}Health`)
+                }else{
+                    console.log(`Only ninja can kick an opponent.`)
+                }
+            }
+        }
+        class Sensei extends Ninja{
+            constructor(name, health, speed, strength){
+                super(name, health, speed, strength);
+                this.health = 200;
+                this.speed = 10;
+                this.strength = 10;
+                this.wisdom = 10;
+            }
+            speakWisdom(){
+                var message = super.drinkSake();
+                console.log(`Just Google It.`)
+            }
+        }
+        
+        var ninja1 = new Ninja("Hyabusa");
+        ninja1.sayName();
+        // -> "My ninja name is Hyabusa!"
+        ninja1.showStats();
+        // -> "Name: Hayabusa, Health: 100, Speed: 3, Strength: 3"
+        var blueNinja = new Ninja("Goemon");
+        var redNinja = new Ninja("Bill Gates");
+        blueNinja.drinkSake();
+        blueNinja.showStats();
+        redNinja.punch(blueNinja);
+        // -> "Goemon was punched by Bill Gates and lost 5 Health!"
+        blueNinja.showStats();
+        blueNinja.kick(redNinja);
+        // -> "Bill Gates was kicked by Goemon and lost 15 Health!"
+        // In this case, redNinja Bill Gates lost 15 health because blueNinja Goemon has 1 point of strength
+        // var randomNinja = new other("unknonw");
+        // randomNinja.kick(blueNinja);
+        var superSensei = new Sensei("Master G");
+        superSensei.speakWisdom();
+        superSensei.showStats();
+
+    </script>
+</body>
+</html>
