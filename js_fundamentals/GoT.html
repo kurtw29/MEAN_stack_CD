@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GoT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+    <style>
+        img{
+            width:300px;
+            margin:20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <img src='images/baratheon.png' id='17' alt='images/baratheon.png' />    
+        <img src='images/lannister.jpg' id='229' alt='images/lannister.jpg' />    
+        <img src='images/stark.jpg' id='362' alt='images/stark.jpg' />    
+        <img src='images/targaryen.jpg' id='378' alt='images/targaryen.jpg' />    
+    </div>
+    <div class='house_details'>
+        <p id='name'></p>
+        <p id='words'></p>
+        <p id='titles'></p>
+    </div>
+
+    <script>
+        $('img').click(function(){
+            $.get('https://anapioficeandfire.com/api/houses/'+$(this).attr('id'), house_info)
+            console.log('https://anapioficeandfire.com/api/houses/'+$(this).attr('id'))
+            function house_info(info){
+                console.log("ID: "+$(this).attr('id')+"info: "+info)
+                $('#name').html("Name: "+info.name);
+                $('#words').html("Words: "+info.words);
+                $('#titles').html("Titles: "+info.titles);
+            }
+        })
+
+
+    </script>
+
+</body>
+</html>
