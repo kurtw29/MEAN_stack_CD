@@ -12,15 +12,15 @@
 
         function Ninja(name, health = 100){
             var self = this;
-            self.name = name;
-            self.health = health;
-            self.speed = 3;
-            self.strength = 3;
+            this.name = name;
+            this.health = health;
+            var speed = 3;
+            var strength = 3;
             self.sayName = function(){
                 console.log("My name is: "+self.name)
             }
             self.showStats = function(){
-                console.log('Name: '+self.name+", Health: "+self.health+", Speed: "+self.speed+", Strength: "+self.strength);
+                console.log('Name: '+self.name+", Health: "+self.health+", Speed: "+speed+", Strength: "+strength);
             }
             self.drinkSake = function(){
                 self.health += 10;
