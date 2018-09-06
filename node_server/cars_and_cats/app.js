@@ -9,7 +9,7 @@ var server = http.createServer(function(req, res){
         });
     }
     else if(req.url === '/images/car1.png'){
-        fs.readFile('./images/car1.png', function(errors, contents){
+        fs.readFile('./images/car1.png', function(errors, contents){ //notice the "." we want to start from the root directory path
             res.writeHead(200, {'Content-Type':'image/png'});
             res.write(contents);
             res.end();
