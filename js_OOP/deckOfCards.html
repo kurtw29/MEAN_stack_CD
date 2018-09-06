@@ -89,16 +89,15 @@
         dl.createDeck();
         dl.showDeck();
         // console.log(dl);
-        dl.shuffle();
-        dl.showDeck();
         // console.log(dl);
         dl.reset();
         dl.showDeck();
-        // console.log(dl);
-        dl.deal();
+        dl.shuffle();
         dl.showDeck();
-        var player = new Player()
-        player.draw(dl.deal()).draw(dl.deal()).draw(dl.deal()).draw(dl.deal())
+        // console.log(dl);
+        var player = new Player("derp")
+        player.draw(dl.deal()).draw(dl.deal()).draw(dl.deal()).draw(dl.deal()).draw(dl.deal())
+        dl.showDeck();
         player.draw(dl.deal())
         player.discard();
     </script>
