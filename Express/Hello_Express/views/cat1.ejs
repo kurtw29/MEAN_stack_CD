@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='cat.css'>
+</head>
+<body>
+    <h1> Page for Cat1</h1>
+    <img src='./images/cat1.png' alt='cat1.png'/>
+    <% for(var x in cat1){ %>
+        <ul>
+            <p> At age: <%= cat1[x].age %></p>
+            <li> Favorite food: <%= cat1[x].food %></li>
+            <li> Favorite sleeping spot: <%= cat1[x].sleep %></li>
+        <% } %>
+    </ul>
+</body>
+</html>

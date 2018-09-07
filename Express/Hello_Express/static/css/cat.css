@@ -1,0 +1,19 @@
+body{
+    text-align:center;
+    background:pink;
+}
+h1{
+    color:blueviolet;
+}
+ul{
+    font-size: large;
+    list-style: none;
+}
+p{
+    color:darkgreen;
+    text-decoration: underline;
+}
+li{
+    color:green;
+    text-decoration: none;
+}
