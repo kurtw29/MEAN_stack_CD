@@ -1,0 +1,17 @@
+.counter_title, .counting{
+    width:100px;
+    margin:20px auto;
+    text-align:center;
+}
+a{
+    width: 100px;
+    height:20px;
+    padding: 10px 50px;
+    border:1px solid black;
+    border-radius:10px;
+    background-color:skyblue;
+    text-decoration: none;
+}
+.links{
+    text-align: center;
+}
