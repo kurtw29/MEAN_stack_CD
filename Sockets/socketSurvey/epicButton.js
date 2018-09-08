@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const session = require('express-session');
 const server = app.listen(1234);
 const io = require('socket.io')(server);
 
@@ -8,12 +7,6 @@ app.use(express.static(__dirname+"/static"));
 app.set("views", __dirname+"/views");
 app.set("view engine", "ejs");
 
-app.use(session({
-    secret:"thisislife",
-    resave: false,
-    saveUninitialized:true,
-    cookie: {maxAge: 60000}
-}))
 
 var counter = 0;
 io.on("connection", function(socket){
