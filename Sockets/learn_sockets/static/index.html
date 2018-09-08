@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title></title>
+<meta name='description' content=''>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script type='text/javascript' src='/socket.io/socket.io.js'></script>
+<script type='text/javascript'>
+    $(document).ready(function(){
+        var socket = io();
+        socket.on('greeting', function(data){
+            console.log(data.msg);
+            socket.emit('thank you', {msg:'Thank you for connecting me. -client'})
+        })
+    })
+</script>
+</head>
+<body>
+    <h1>Fun with clients</h1>
+</body>
+</html>

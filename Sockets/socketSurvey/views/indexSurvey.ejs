@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sockets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/indexSurvey.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type='text/javascript' src="/socket.io/socket.io.js"></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $('#display').hide();
+            var socket = io();
+
+            socket.on('greeting', function(data){
+                console.log("What is the 'data' that we are receving to server?", data);
+                socket.emit('thankyou', {msg: "Thank you for connecting me: - client"});
+            });
+
+            // Emitting form data when user click submit
+            $('#survey_form').submit(function(e){
+                e.preventDefault();
+                socket.emit('form_data', $(this).serialize());
+                console.log("Sent seralized_form data: ", $(this).serialize());
+            })
+
+            //Listening for form_info from server
+            socket.on('form_info', function(info){
+                console.log("did we receive info? info:", info);
+                $('#display').show();
+                document.getElementById("display_text").innerHTML="You emitted the following information to the server:";
+                document.getElementById("info_name").innerHTML = "Name: "+info.name;
+                document.getElementById("info_location").innerHTML = "Location: \n"+info.location;
+                document.getElementById("info_language").innerHTML = "Language: \n"+info.language;
+                document.getElementById("info_comment").innerHTML = "Comment: \n"+info.comment;
+                document.getElementById("display_lucky").innerHTML = "Your lucky number is \""+info.lucky+"\"!";
+            })
+        });
+    </script>
+
+</head>
+<body>
+    <!--This is where we display form info received from server-->
+    <div id='display'>
+        <p id='display_text'></p>
+        <ul>
+            <li id='info_name'></li>
+            <li id='info_location'></li>
+            <li id='info_language'></li>
+            <li id='info_comment'></li>
+        </ul>
+        <p id='display_lucky'></p>
+    </div>
+
+    <!--This is the form input that user enter-->
+    <h1>Survey Form</h1>
+    <form id='survey_form' action='result' method='POST'>
+        <label>Your Name: </label>
+        <input type='text' name='name' />
+        <br>
+        <label>Dojo Location</label>
+        <select name='location'>
+            <option value='San-Jose'>San Jose</option>
+            <option value='Seattle'>Seattle</option>
+            <option value='Chicago'>Chicago</option>
+            <option value='Washing-DC'>Washing DC</option>
+        </select>
+        <br>
+        <label>Favorite Language</label>
+        <select name='language'>
+            <option value = 'javascript'>Javascript</option>
+            <option value = 'python'>Python</option>
+            <option value = 'java'>Java</option>
+            <option value = 'swift'>Swift</option>
+        </select>
+        <br><br>
+        <label>Comment(optional)<label>
+        <br>
+        <textarea name='comment' cols=30 rows=4></textarea>
+        <br>
+        <input type='submit' />
+    </form>
+</body>
+</html>
