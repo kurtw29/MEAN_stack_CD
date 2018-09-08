@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>The Epic Button</title>
+<meta name='description' content=''>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel='stylesheet' href='/css/epicButton.css'>
+
+<script type='text/javascript' src='/socket.io/socket.io.js'></script>
+<script type='text/javascript'>
+    $(document).ready(function(){
+        var socket = io();
+        socket.on("greeting", function(data){
+            console.log("message: ",data.msg, "counter: ",data.count);
+            socket.emit('reply', {msg:"Confirm connection with client"});
+            $('#pushed_count').html(data.count);
+        });
+        $('#push').click(function(){
+            console.log("clicked #push");
+            socket.emit('pushed', {pushed: "we pushed"});
+        })
+        $('#reset').click(function(){
+            console.log('clicked #reset');
+            socket.emit('reseting', {reset: 0})
+        })
+        socket.on('counter', function(data){
+            console.log("receving counter from server: ",data.count)
+            $('#pushed_count').html(data.count);
+        })
+    })
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>This button has been pushed <span id='pushed_count'></span> time(s).</h1>
+        <h3>Push the button to update the count!</h3>
+        <button id='push'>Push the epic button</button>
+        <br>
+        <button id='reset'>Reset Count</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+/* reset */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color:blanchedalmond;
+}
+/* heading text */
+h1{
+    color:royalblue;
+    text-align:center;
+    margin:20% 0px 20px 0px;
+
+}
+/* intruction text */
+.container{
+    text-align:center;
+}
+h3{
+    text-align:center;
+    color:rosybrown;
+    margin: 40px auto 0px auto;
+
+}
+/* button counter */
+#pushed_count{
+    font-weight:bold;
+    color:blueviolet;
+}
+#push{
+    font-weight:bold;
+    font-size:xx-large;
+    border-radius:20px;
+    background-color:lightgoldenrodyellow;
+    color:blueviolet;
+    padding:10px 20px;
+    width: 360px;
+    height:160px;
+    margin: 20px auto 40px auto;
+}
+#reset{
+    font-weight:bold;
+    background-color:red;
+    color:black;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width:160px;
+    margin:50px auto;
+}

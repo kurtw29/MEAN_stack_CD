@@ -9,15 +9,15 @@ io.on('connection', function(socket){
     socket.emit('greeting', {msg: "Hello fellow clients, this is your server - Server"});
     socket.on('thankyou', function(data){ //Server is listening for "thank you" and it'll trigger the function
         console.log(data.msg)
+        
+            socket.on("form_data", function(data){
+                console.log("received form data:", querystring.parse(data))
+                var form_info = querystring.parse(data);
+                var lucky_num = Math.trunc(Math.random()*1000);
+                form_info.lucky = lucky_num;
+                socket.emit("form_info", form_info);
+            })
     });
-
-    socket.on("form_data", function(data){
-        console.log("received form data:", querystring.parse(data))
-        var form_info = querystring.parse(data);
-        var lucky_num = Math.trunc(Math.random()*1000);
-        form_info.lucky = lucky_num;
-        socket.emit("form_info", form_info);
-    })
 
 })
 app.use(express.static( __dirname+"/static"));
