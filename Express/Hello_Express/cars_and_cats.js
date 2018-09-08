@@ -1,6 +1,7 @@
 var express = require("express");
 
 var app = express();
+var catArray = require('./cats_info');
 
 app.use(express.static(__dirname + "/static/"));
 //we store our css file in /static/css, so express needs to use the files in that folder as well
@@ -25,17 +26,17 @@ app.get("/form", function(request, response){
 
 app.get("/cat1", function(request, response){
     // we store the hardcoded cat info in cat_info.js file, and used module.exports/require to call it, request via the url "./cats_info"
-    var cat1_array = require('./cats_info').cat1;
+    var cat1_array = catArray.cat1;
     //render the html file at "cat1"
     //we passed the object "cat1_array" with key: cat1 for templating
     response.render('cat1', {cat1:cat1_array});
 })
 app.get("/cat2", function(request, response){
-    var cat2_array = require('./cats_info').cat2;
+    var cat2_array = catArray.cat2;
     response.render('cat2', {cat2:cat2_array});
 })
 app.get("/cat3", function(request, response){
-    var cat3_array = require('./cats_info').cat3;
+    var cat3_array = catArray.cat3;
     response.render('cat3', {cat3:cat3_array});
 })
 

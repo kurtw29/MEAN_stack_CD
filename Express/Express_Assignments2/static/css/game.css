@@ -1,0 +1,60 @@
+body{
+    text-align:center;
+    background-color:peachpuff;
+}
+
+h1.welcome_text{
+    text-align:center;
+    color:green;
+    margin-top:20%;
+}
+
+h4.intro_text, h4.instruction_text{
+    color:olive;
+}
+
+input[type=number]{
+    height:50px;
+    width:250px;
+    margin:0px auto;
+    border-radius: 10px;
+    text-align:center;
+    color:orange;
+    font-size:xx-large;
+    padding:10px 0px;
+    background-color:palegoldenrod
+}
+
+input[type=submit]{
+    display:block;
+    margin:10px;
+    background-color:transparent;
+    border-radius: 10px;
+    height:40px;
+    width:100px;
+    font-size:large;
+    margin:20px auto;
+    color:orange;
+    background-color:palegoldenrod;
+}
+div.response{
+    width: 360px;
+    height: 120px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px auto;
+    padding: 40px 0px 10px 0px;
+    font-size:x-large;
+    color:white;
+}
+a{
+    display:block;
+    background-color:transparent;
+    border-radius: 10px;
+    height:40px;
+    width:200px;
+    font-size:large;
+    margin:20px auto;
+    color:orange;
+    background-color:palegoldenrod;
+}
