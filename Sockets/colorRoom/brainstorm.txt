@@ -1,0 +1,19 @@
+new_user makes '/' url request
+
+render the file colorRoom.ejs
+
+client load window, and connect socket with serever
+with the available "green", "blue" and "pink" selections
+
+server- listen for "connection" and emit "greeting" data: msg:"connected with server" and bg_color:"green"
+
+client - listen for the "greeting", console.log(msg) and jquery bg_color CSS background-color
+
+click the selection and the background color changes
+EMIT the color to the server label "change_color" with color:"selected color value"
+
+server receives the "change_color" socket, update bg_color and boardcast the color to all sockets "new_color"
+
+all clients listen the label "new_color" and jquery change the CSS background-color with the emitted data.
+jquery change the CSS in associate with the emitted "bg_color"
+

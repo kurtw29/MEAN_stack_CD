@@ -1,0 +1,25 @@
+body{
+    text-align:center;
+}
+.title{
+    margin:30% 0px 20px;
+}
+button{
+    width:250px;
+    height:40px;
+    margin:20px;
+    display:flex;
+    justify-content:center;
+    display:inline-block;
+    border-radius:10px;
+    font-size:x-large;
+}
+.green{
+    background-color:lightgreen;
+}
+.blue{
+    background-color:skyblue;
+}
+.pink{
+    background-color:pink;
+}
