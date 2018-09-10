@@ -1,0 +1,12 @@
+
+set up form for user input
+    input for text
+    submit button for click/keyboard enter
+
+upon form submit emit "message" form_info + user_info to server
+
+server listens for message and emit the message and its author to all sockets
+    socket.on("message", function(data){
+        emit "post" message + user name}
+
+client listens for emit "post" and updates its HTML DOM with the emit data

@@ -1,0 +1,29 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+body{
+    background-color:blanchedalmond;
+}
+ul#logged_users{
+    list-style:none;
+    border:1px solid salmon;
+}
+li.logged_users{
+    display:inline
+}
+div#posts{
+    border:1px solid lightgreen;
+}
+ul.conversations{
+    list-style:none;
+}
+label.users_name{
+    font-weight:bold;
+    color:blue;
+}
+p#handler{
+    font-style:italic;
+    color:grey;
+}

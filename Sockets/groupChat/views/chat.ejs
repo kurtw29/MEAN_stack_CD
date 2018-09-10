@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title></title>
+<meta name='description' content=''>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>
+<link rel='stylesheet' href='css/chat.css' />
+<script src='socket.io/socket.io.js'></script>
+<script>
+    $(document).ready(function(){
+        $('.wrapper').hide();
+        //when window load: ask for user name; if user click 'cancel' user = null, user can put empty and click 'okay', then user = ''
+        var user;
+        var user_data;
+        // check if user input is valid, otherwise re-send prompt() and check_user();
+        check_user(user);
+        function check_user(user){
+            console.log("checking user...")
+            //user's name must be not be null nor empty in order to use the chat
+            if(user == null || user.length == 0){
+                console.log("are we an else case?")
+                user = prompt("Please enter your name, pretty please", "Pikachu")
+                check_user(user);
+                //otherwise, we re-prompt() again and do the check_user() again.
+            }else if(user != null && user.length > 0){
+                console.log(user);
+                // after successfully enter the loaded the page, we set up socket connection
+                socket = io();
+                // listen for server 'greeting' to confirm comfiration with server
+                socket.on('greeting', function(data){
+                    console.log(data.msg);
+                    user_data={
+                        name:user,
+                        id:"<%= user_id %>"
+                    }
+                    socket.emit('reply', {msg:"confirmed connection with client", user_info: user_data})
+                    // turn "<" or ">" into "&" to prevent injection
+                    var uname = user_data.name.replace(/>|</g, '&');
+                    $('#user_label').html(uname);
+                })
+                $('.wrapper').show();
+            }
+        }
+        //declare socket variable, assigned io() in the check_user() function;
+        var socket;
+        socket.on('users_list', function(list){
+            $('#logged_users').html("");
+            console.log(list.users_list);
+            // after enter charoom, load logged users' name
+            for(luser of list.users_list){
+                $('#logged_users').append("<li class='logged_user'>"+luser.name+"</li>" )
+            }
+            // also load the existing chatboard posts
+            for(post of list.posts_info){
+                var pname = post.poster.replace(/>|</g, '&');
+                var ppost = post.post_message.replace(/>|</g, '&');
+                $('.conversations').append("<li class='post'><label class='users_name'>"+pname+": </label><span class='post_text'>"+post.post_message+"<span></li>")
+            }
+        })
+
+        //CLIENT listening for post_message and insert to post conversation output
+        socket.on('post_message', function(data){
+            var upost = data.post_message.replace(/>|</g, '&');
+            var uname = data.poster.replace(/>|</g, '&');
+            $('.conversations').append("<li class='post'><label class='users_name'>"+uname+": </label><span class='post_text'>"+upost+"<span></li>")
+        })
+
+        $('#message_form').submit(function(e){
+            e.preventDefault();
+            socket.emit('send_message', {message:$('#message').val(), user_info:user_data})
+            document.getElementById('message').value="";
+        })
+        
+        // When user press a key (down, press, then function invoke upon up), emit to server 'typing:true'
+        $('#message').keypress(function(){
+            socket.emit('typing');
+            console.log("Client EMIT-ing: 'typing:true'");
+        });
+
+        socket.on('someone_typing', function(){
+            document.getElementById("handler").innerHTML="Someone is typing..."
+            // remove timer (from detecting 'stopped typing')
+            clearTimeout(timeout)
+            // detect when someone stopped typing for some time, remove handler's text
+            var timeout = setTimeout(function(){
+                // console.log("SETTING TIME OUT for DETECTING STOPPED TYPING");
+                document.getElementById("handler").innerHTML="";
+            }, 3000);
+        })
+
+    })
+</script>
+</head>
+<body>
+    <div class="container wrapper">
+        <h1 class='title'>Dojo Chat</h1>
+        <!-- display logged users -->
+        <ul id='logged_users'>
+            <!-- <li class='logged_user'>Pikachu</li>
+            <li class='logged_user'>fireFox</li> -->
+        </ul>
+        <!-- display conversation posts -->
+        <div id='posts'>
+        <ul class='conversations'>
+
+            <!-- each post should have "user name": "post message" -->
+            <!-- <li class='post'><label class='users_name'>Jess</label><span class='post_text'>Hello, honor to be first to post a message here.<span></li>
+            <li class='post'><label class='users_name'>Elena</label><span class='post_text'>Hello, pleased to be second to post a message here.<span></li> -->
+            <!-- Broadcast when someone's typing -->
+        </ul>
+        <p id='handler'></p>
+        </div>
+        <!-- show this user's name -->
+        <label id='user_label'></label>
+        <!-- this is where user can type message -->
+        <form method='post' action='/post' id='message_form'>
+        <input type="text" name='message' id='message' placeholder='type message here'/>
+        <input type="button" name='send' value='Send'/>
+        </form>
+    </div> <!--end tag for container wrapper-->
+
+    <script>
+        $('.wrapper').hide();
+    </script>
+</body>
+</html>
