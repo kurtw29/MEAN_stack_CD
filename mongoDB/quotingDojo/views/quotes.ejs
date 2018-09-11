@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Awesome Quotes</title>
+<meta name='description' content=''>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>
+<link rel='stylesheet' href='/css/quotes.css'>
+</head>
+<body>
+    <div class="container wrapper">
+        <h1 class='title'>Here are some awesome quotes!</h1>
+        <ul class='quotes'>
+            <!-- <li class='quote'>"I make lame jokes"</li>
+            <li class='quoter'>-Quoter_Name at Time(11:57am) Date(June 18 2018)</li>
+            <li class='quote'>"D'Oh!"</li>
+            <li class='quoter'>-Quoter_Name at Time(1:34pm) Date(June 10 2018)</li>
+            <li class='quote'>"To struggle is to learn!"</li>
+            <li class='quoter'>-Quoter_Name at Time(12:34pm) Date(June 08 2018)</li> -->
+            <% for(q of quotes){ %>
+                <li class='quote'>"<%= q.quote %>"</li>
+                <li class='quoter'>-<%= q.name %> <%= q.date %></li>
+            <% } %>
+        </ul>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+.wrapper{
+    border:2px solid blue;
+    border-radius:20px;
+}
+ul{
+    list-style:none;
+}
+li.quote{
+    color:grey;
+}
+li.quoter{
+    color:blue;
+    text-indent: 50px;
+}

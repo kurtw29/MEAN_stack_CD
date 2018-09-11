@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Welcome to Quoting Dojo</title>
+<meta name='description' content=''>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>
+<link rel='stylesheet' href='/css/index.css'>
+</head>
+<body>
+    <div class="container wrapper">
+        <h1 class='title'>Welcome to Quoting Dojo</h1>
+        <% JSON.stringify(messages) %>
+        <% if(messages.submit_quote) { %>
+            <% for(var x of messages.submit_quote) { %>
+                <h3><%= x %></h3>
+            <% } %>
+        <% } %> 
+        <form action='/quoting' method='POST' id='quote_form'>
+            <label>Your name: </label>
+            <input type='text' name='name' id='name' />
+            <br>
+            <label>Your quote: </label>
+            <input type='text' name='quote' id='quote' />
+            <br>
+            <input type='submit' id='submit' value='Add my quote!'/>
+            <a href='/quotes'>Skip to quotes!</a>
+        </form>
+    </div>
+</body>
+</html>
