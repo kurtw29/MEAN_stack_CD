@@ -1,3 +1,4 @@
+//This is "in-order" traversing
 BST.prototype.traverse = function(){
     if(this.root){
         this.root.traverse();

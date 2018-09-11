@@ -34,7 +34,7 @@ BSTNode.prototype.insert = function(val){
     }
 }
 
-//traverse below:
+//traverse "in-order" below:
 BSTNode.prototype.traverse = function(){
     if(this.left != null){
             this.left.traverse();
