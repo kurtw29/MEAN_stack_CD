@@ -1,14 +1,24 @@
 .wrapper{
     border:2px solid blue;
     border-radius:20px;
+    margin-top:20%;
+    padding:20px;
+}
+h1{
+    text-align:center;
+    text-decoration: underline;
 }
 ul{
     list-style:none;
+    margin:30px 15%;
 }
 li.quote{
     color:grey;
+    font-size:xx-large;
 }
 li.quoter{
     color:blue;
     text-indent: 50px;
+    font-size:x-large;
+    margin-bottom: 20px;
 }

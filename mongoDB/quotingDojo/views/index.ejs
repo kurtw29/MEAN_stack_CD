@@ -11,13 +11,13 @@
 <body>
     <div class="container wrapper">
         <h1 class='title'>Welcome to Quoting Dojo</h1>
-        <% JSON.stringify(messages) %>
-        <% if(messages.submit_quote) { %>
-            <% for(var x of messages.submit_quote) { %>
-                <h3><%= x %></h3>
-            <% } %>
-        <% } %> 
         <form action='/quoting' method='POST' id='quote_form'>
+            <% JSON.stringify(messages) %>
+            <% if(messages.submit_quote) { %>
+                <% for(var x of messages.submit_quote) { %>
+                    <h5><%= x %></h5>
+                <% } %>
+            <% } %> 
             <label>Your name: </label>
             <input type='text' name='name' id='name' />
             <br>
@@ -25,7 +25,7 @@
             <input type='text' name='quote' id='quote' />
             <br>
             <input type='submit' id='submit' value='Add my quote!'/>
-            <a href='/quotes'>Skip to quotes!</a>
+            <button><a href='/quotes'>Skip to quotes!</a></button>
         </form>
     </div>
 </body>
