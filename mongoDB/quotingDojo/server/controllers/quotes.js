@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 //retrive the schema called 'Quote' and store it to the variable Quote
-const Quote = mongoose.model("Quote");
+// const Quote = mongoose.model("Quote");
+require('./../config/mongoose.js')
 
 module.exports = {
 

@@ -16,8 +16,9 @@ app.use(session({
 const flash = require('express-flash');
 app.use(flash());
 
-//modular for the models
-require('./server/models/quote.js')();
+// //modular for the models
+// require('./server/models/quote.js')();
+require('./server/config/mongoose.js')
 
 //Modular for the routing
 require('./server/config/routes.js')(app);

@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
-
 module.exports = function(){
     
-    mongoose.connect('mongodb://localhost/quoteDojo');
+mongoose.connect('mongodb://localhost/quoteDojo');
 // create schema for quotes
 var QuoteSchema = new mongoose.Schema({
     name:{type:String, required: [true, "Name cannot be blank"], minlength:[3,"Name needs at least 3 characters"]},
@@ -14,6 +13,4 @@ var QuoteSchema = new mongoose.Schema({
 mongoose.model("Quote", QuoteSchema);
 //retrive the schema called 'Quote' and store it to the variable Quote
 const Quote = mongoose.model("Quote");
-
-
 }
