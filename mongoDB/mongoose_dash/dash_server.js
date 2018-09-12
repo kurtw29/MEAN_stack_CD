@@ -47,7 +47,7 @@ app.get('/mongooses/:id', function(req, res){
             console.log("Error in finding the animal with params id:", err)
         }
         // console.log("display the animal object associated with the params id:", animals)
-        res.render('info', {animals:animals});
+        res.render('info', {animals:animals})
     })
 })
 
