@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Login and Registration</title>
+<meta name='description' content=''>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>
+</head>
+<body>
+    <div class="col-4">
+        <h1> Registration</h1>
+        <form action='/reg' method='post'>
+            <label>Email</label><input type='text' name='email' />
+            <br>
+            <label>First Name</label><input type='text' name='first_name' />
+            <br>
+            <label>Last Name</label><input type='text' name='last_name' />
+            <br>
+            <label>Password</label><input type='password' name='password' />
+            <br>
+            <label>Birthday</label><input type='date' name='birthday' />
+            <br>
+            <input type='submit' value='Register'/>
+            <% if(messages.reg){ %>
+                <% for (m of messages.reg){ %>
+                    <p class='flash_message'><%= m %></p>
+                <% } %>
+            <% } %>
+        </form>
+    </div>
+    <div class="col-4">
+        <h1>Login</h1>
+        <form action='/login' method='post'>
+        <label>Email</label><input type='text' name='email' />
+        <br>
+        <label>Password</label><input type='password' name='password' />
+        <br>
+        <input type='submit' value='Login'/>
+        </form>
+        <% if(messages.login){ %>
+            <% for (m of messages.login){ %>
+                <p class='flash_message'><%= m %></p>
+            <% } %>
+        <% } %>
+    </div>
+</body>
+</html>
