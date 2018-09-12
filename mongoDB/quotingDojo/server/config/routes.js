@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
-//retrive the schema called 'Quote' and store it to the variable Quote
-const Quote = mongoose.model("Quote");
+//modularized the controllers
 const quotes = require('../controllers/quotes.js')
 
 module.exports = function(app){
