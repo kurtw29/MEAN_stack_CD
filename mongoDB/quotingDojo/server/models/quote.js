@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-module.exports = function(){
     
     mongoose.connect('mongodb://localhost/quoteDojo');
     // create schema for quotes
@@ -13,4 +12,3 @@ module.exports = function(){
     mongoose.model("Quote", QuoteSchema);
     //retrive the schema called 'Quote' and store it to the variable Quote
     const Quote = mongoose.model("Quote");
-}
