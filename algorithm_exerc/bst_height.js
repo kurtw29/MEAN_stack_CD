@@ -25,9 +25,11 @@ BSTNode.prototype.height = function(){
     }
 
     if(left > right){
-        return left++;
+        left++;
+        return left;
     }else{
-        return right++;
+        right++;
+        return right;
     }
 
 }
