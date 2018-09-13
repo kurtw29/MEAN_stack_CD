@@ -13,5 +13,4 @@ module.exports = function(){
     mongoose.model("Quote", QuoteSchema);
     //retrive the schema called 'Quote' and store it to the variable Quote
     const Quote = mongoose.model("Quote");
-    return Quote
 }
