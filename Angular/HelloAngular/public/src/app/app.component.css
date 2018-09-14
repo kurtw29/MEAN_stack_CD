@@ -1,3 +1,42 @@
-div{
+div.heading{
     border:5px solid blueviolet;
+    border-bottom: none;
+}
+div.assignment{
+    border:5px solid royalblue;
+}
+h1, h2{
+    text-align:center;
+}
+ul{
+    width:800px;
+    text-align:center;
+    list-style: none;
+    margin:10px auto;
+}
+li{
+    text-align:center;
+    margin:30px auto;
+    font-size:x-large;
+    padding-bottom:20px;
+    border-bottom:2px solid green;
+}
+button.show_all{
+    width:100px;
+    margin:10px auto;
+    padding:5px;
+    background-color:purple;
+    color:white;
+    text-align:center;
+    border-radius: 10px;
+}
+button.show_task{
+    height:55px;
+    width:55px;
+    background:teal;
+    color:white;
+    border-radius: 50%;
+    text-align:center;
+    object-fit:cover;
+    margin-left:20%;
 }

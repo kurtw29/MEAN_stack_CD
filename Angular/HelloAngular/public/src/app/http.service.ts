@@ -22,6 +22,7 @@ export class HttpService {
   getTaskID(id){
     // let tempObs = this._http.get('/tasks/'+id);
     // tempObs.subscribe(data => console.log("Got Task by ID data:", data))
+    console.log('in sevice gettaskid:(id); ', id)
     return this._http.get('/tasks/'+id);
   }
 }
