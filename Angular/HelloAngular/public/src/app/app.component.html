@@ -18,66 +18,62 @@
   </li>
 </ul> -->
 <div class='assignment'>
-<h1> Restful Tasks API</h1>
-<h2> Create New Task </h2>
-  <form (submit)="onSubmit()">
-    <!-- use the json pipe to see how newTask() changes in real time -->
-    <p> {{ newTask | json }}</p>
-    <input type='text' name='newTask.title' [(ngModel)]="newTask.title" />
-    <input type='text' name='newTask.description' [(ngModel)]="newTask.description" />
-    <input type='submit' value='Create Task' />
-  </form>
-
-<!-- Editing BOX -->
-<div class='edit_task' *ngIf="show_edit">
-    <form (submit)="onEdit()">
-      <!-- <p>{{editTask | json}}</p>
-      {{secTask._id}} -->
-      <label>Task title</label><input type='text' name='editTask.title' [(ngModel)]="editTask.title" />
-      <br>
-      <label>Task Description</label><input type='text' name='editTask.description' [(ngModel)]="editTask.description" />
-     <br>
-      <label>Completion</label>
-      <select name='editTask.completed' [(ngModel)]="editTask.completed">
-        <option value='false' selected>Not completed yet</option>
-        <option value='true'>Completed</option>
-      </select>
-      <br>
-      <input type='hidden' [value]="secTask._id" />
-      <input type='submit' value='Edit' />
+  <h1> Restful Tasks API</h1>
+  <h2> Create New Task </h2>
+    <form (submit)="onSubmit()">
+      <!-- use the json pipe to see how newTask() changes in real time -->
+      <p> {{ newTask | json }}</p>
+      <input type='text' name='newTask.title' [(ngModel)]="newTask.title" />
+      <input type='text' name='newTask.description' [(ngModel)]="newTask.description" />
+      <input type='submit' value='Create Task' />
     </form>
-</div>
 
-  <!-- <button (click)="do($event)"> Find Events </button> -->
-
-<h2> All the tasks
-  <br>
-  <button class='show_all' (click)="getTaskFromService()">GET ALL TASKS</button>
-</h2>
-
-<ul>
-  <div class='all_tasks' *ngFor="let task of tasks; let i = index">
-    <li>Index:{{i}}
-      <!-- id: {{task._id}} -->
+  <!-- Editing BOX -->
+  <div class='edit_task' *ngIf="show_edit">
+      <form (submit)="onEdit()">
+        <!-- <p>{{editTask | json}}</p>
+        {{secTask._id}} -->
+        <label>Task title</label><input type='text' name='editTask.title' [(ngModel)]="editTask.title" />
+        <br>
+        <label>Task Description</label><input type='text' name='editTask.description' [(ngModel)]="editTask.description" />
       <br>
-      {{task.title}}
-      <button class='show_task' (click)='show=!show; getTaskByID(task._id)'>{{show ? 'Hide' : 'Show'}}</button>
-      <!-- {{task.title}}<button class='show_task' (click)='show=!show'>{{show ? 'Hide' : 'Show'}}</button>
-        <p *ngIf="show" class='task_desc'>see below for description</p> -->
-        <button class='edit_task' (click)='show_edit=!show_edit;recall_id(task)'>Edit</button>
-        <button class='delete_task' (click)='onDelete(task._id)'>Delete</button>
-    </li>
+        <label>Completion</label>
+        <select name='editTask.completed' [(ngModel)]="editTask.completed">
+          <option value='false' selected>Not completed yet</option>
+          <option value='true'>Completed</option>
+        </select>
+        <br>
+        <input type='hidden' [value]="secTask._id" />
+        <input type='submit' value='Edit' />
+      </form>
   </div>
 
-  <div *ngIf="show">
-    <p><span style='font-weight:bold'>Task Description:</span> {{secTask[0].description}}
+    <!-- <button (click)="do($event)"> Find Events </button> -->
+
+  <h2> All the tasks
     <br>
-    <span style='font-weight:bold'>Completion:</span> {{secTask[0].completed}}</p>
-  </div>
-  <!-- <p *ngIf="">Id:{{task._id}}</li> -->
-</ul>
-<!-- <h2> Tasks #2 </h2>
-<p>{{secTask.description}}</p> -->
+    <button class='show_all' (click)="getTaskFromService()">GET ALL TASKS</button>
+  </h2>
+
+  <ul>
+    <div class='all_tasks' *ngFor="let task of tasks; let i = index">
+      <li>Index:{{i}}
+        <!-- id: {{task._id}} -->
+        <br>
+        {{task.title}}
+        <button class='show_task' (click)='show=!show; getTaskByID(task._id)'>{{show ? 'Hide' : 'Show'}}</button>
+        <!-- {{task.title}}<button class='show_task' (click)='show=!show'>{{show ? 'Hide' : 'Show'}}</button>
+          <p *ngIf="show" class='task_desc'>see below for description</p> -->
+          <button class='edit_task' (click)='show_edit=!show_edit;recall_id(task)'>Edit</button>
+          <button class='delete_task' (click)='onDelete(task._id)'>Delete</button>
+      </li>
+    </div>
+  </ul>
+    <!-- <p *ngIf="">Id:{{task._id}}</li> -->
+  <!-- <h2> Tasks #2 </h2>
+  <p>{{secTask.description}}</p> -->
+  <app-task *ngIf='selectedTask' [taskToShow]='selectedTask'>
+  </app-task>
 </div>
 
 

@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   newTask: any; 
   editTask: any;
   show_edit: false;
+  selectedTask: any;
 
 
   constructor(private _httpService: HttpService){
@@ -36,7 +37,9 @@ export class AppComponent implements OnInit {
     observable.subscribe(data =>{
       console.log("Got our taskbyID data!", data);
       this.secTask = data
+      this.selectedTask = data;
       console.log("secTask: ", this.secTask);
+      console.log("selectedTask: ", this.selectedTask);
     })
   }
 
