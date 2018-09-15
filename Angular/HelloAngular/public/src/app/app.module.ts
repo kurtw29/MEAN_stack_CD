@@ -5,6 +5,7 @@ import { HttpService } from './http.service';
 import { AppComponent } from './app.component';
 //set up HttpClient so it can make http requests - then add to the imports array
 import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms'; // <--import forms momdule
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

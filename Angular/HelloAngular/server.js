@@ -47,7 +47,7 @@ app.post("/tasks", (req, res) => {
         if(err){
             res.json("ERROR occured when creating a task. ERR:", err)
         }
-        res.json(data)
+        res.json({message:"Successfully added task!"})
     })
 })
 
@@ -57,7 +57,7 @@ app.put("/tasks/:id", (req, res) => {
         if(err){
             res.json("ERROR ocurred when updating a task")
         }
-        res.json(data)
+        res.json({message:"Successfully updated task"})
     })
 })
 

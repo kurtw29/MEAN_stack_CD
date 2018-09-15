@@ -25,4 +25,17 @@ export class HttpService {
     console.log('in sevice gettaskid:(id); ', id)
     return this._http.get('/tasks/'+id);
   }
+  addTask(data){
+    return this._http.post('/tasks', data);
+  }
+
+  updateTask(data){
+    console.log("In service.ts: updateTask data: ", data)
+    return this._http.put('/tasks/'+data.id, data);
+  }
+
+  deleteTask(id){
+    console.log("In service.ts/ under deleteTask, received data from component - data:", id)
+    return this._http.delete('/tasks/'+id)
+  }
 }

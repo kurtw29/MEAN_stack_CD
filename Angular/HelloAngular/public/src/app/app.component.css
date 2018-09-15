@@ -5,6 +5,12 @@ div.heading{
 div.assignment{
     border:5px solid royalblue;
 }
+div.edit_task{
+    border:2px solid green;
+    width:500px;
+    margin:20px auto;
+    padding:10px auto;
+}
 h1, h2{
     text-align:center;
 }
