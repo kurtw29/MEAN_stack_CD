@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   secTask: any;
   newTask: any; 
   editTask: any;
+  show_edit: false;
+
 
   constructor(private _httpService: HttpService){
   }
@@ -43,7 +45,7 @@ export class AppComponent implements OnInit {
     observable.subscribe(data =>{
       console.log("CREATED tasks, testing here's response from server:",data);
     })
-    // this.newTask = {title: "", description:""}
+    this.newTask = {title: "", description:""}
   }
 
   //this is used track which user we're to edit and to re-populate our edit-form
@@ -58,6 +60,8 @@ export class AppComponent implements OnInit {
     let observable = this._httpService.updateTask(this.editTask);
     observable.subscribe(data =>{
       console.log("EDITING tasks, testing here's response from server:",data);
+      this.getTaskFromService();
+      this.show_edit = false;
     })
   }
 
