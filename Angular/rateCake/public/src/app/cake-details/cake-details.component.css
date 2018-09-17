@@ -1,0 +1,26 @@
+div.wrapper{
+    margin:20px;
+    border-radius:10px;
+}
+div.comment_list{
+    width: 500px;
+    height: 400px;
+    overflow-y: scroll;
+    display:inline-block;
+    vertical-align: top;
+    margin-left:20px;
+    background-color:plum;
+    border:1px solid violet;
+    border-radius:10px;
+}
+ul.comment_list{
+    list-style: none;
+}
+img.cake_image{
+    object-fit: cover;
+    width:400px;
+    height:400px;
+    border-radius:10px;
+    display:inline-block;
+    vertical-align: top;
+}

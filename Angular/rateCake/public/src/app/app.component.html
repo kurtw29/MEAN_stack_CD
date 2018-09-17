@@ -1,0 +1,38 @@
+<h1 class='title'>Rate my cakes</h1>
+<div class="container">
+  <div class="col-4 add_cake form-group">
+    <form (submit)='onAdd()'>
+      <label for='baker'>Baker name:</label>
+      <input type='text' class='form-control' name='baker' id='baker' [(ngModel)]="newCake.baker" />
+      <br>
+      <label for='img_url'>Image url:</label>
+      <input type='text' class='form-control' name='image_url' id='image_url' [(ngModel)]="newCake.url" />
+      <br>
+      <input type='submit' class='btn btn-primary' value='Submit'>
+    </form>
+  </div>
+  <div class="col-6 cake_list">
+    <ul class='cake_list'*ngFor="let cake of cakes; let idx = index">
+      <li class='cake'>
+        <img class='cake_icon' [src]="cake.url" [alt]="cake.url" (click)="getThisCake(cake)" />
+        <form class='rating form-group' #cakeform="ngForm" (ngSubmit)='onRating(cake._id, cakeform.value)'>
+        <!-- <form class='rating form-group' #cakerating="ngForm" (ngSubmit)='onRating(cake._id, cakerating.value)'> -->
+          <label>Rating and Comments</label>
+          <!-- <input type='hidden' name='cakeId' value='{{cake._id}}' [(ngModel)]="rateCake.cakeid"/> -->
+          <select name='stars' class='custom-select' ngModel [value]="rateCake.stars">
+          <!-- <select name='stars'class='custom-select' ngModel> -->
+            <option value='5' selected>5 Stars</option>
+            <option value='4'>4 Stars</option>
+            <option value='3'>3 Stars</option>
+            <option value='2'>2 Stars</option>
+            <option value='1'>1 Stars</option>
+          </select>
+          <textarea name='comment' placeholder='enter comment here' ngModel [value]="rateCake.comment"></textarea>
+          <!-- <textarea name='comment' placeholder='enter comment here' ngModel></textarea> -->
+          <input type='submit' class='btn btn-info' value='Rate!' />
+        </form>
+      </li>
+    </ul>
+  </div>
+  <app-cake-details *ngIf='thisCake' [thisCakeDetails]='thisCake'></app-cake-details>
+</div>

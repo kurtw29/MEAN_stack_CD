@@ -1,0 +1,57 @@
+h1.title{
+    text-align:center;
+    font-family: Helvetica, Arial, sans-serif;
+    color:royalblue;
+    margin:20px;
+}
+div.add_cake, div.cake_list{
+    border:2px solid pink;
+    border-radius:10px;
+    background-color:blanchedalmond;
+    padding:20px;
+    margin:20px;
+    color:royalblue;
+    display:inline-block;
+    
+}
+div.add_cake input{
+    border-radius:5px;
+}
+div.cake_list{
+    height: 600px;
+    overflow-y: scroll;
+    display:inline-block;
+    vertical-align: top;
+}
+ul.cake_list{
+    list-style: none;
+}
+img.cake_icon{
+    object-fit: cover;
+    width:200px;
+    height:200px;
+    border-radius:10px;
+    display:inline-block;
+    vertical-align: top;
+}
+form.rating{
+    display:inline-block;
+    vertical-align: middle;
+    width:200px;
+    margin-left:20px;
+}
+form.rating textarea{
+    margin:10px 0px;
+    border-radius:5px;
+    padding:10px;
+}
+app-cake-details{
+    border:2px solid pink;
+    border-radius:10px;
+    background-color:blanchedalmond;
+    padding:20px;
+    margin:10px;
+    color:royalblue;
+    display:block;
+    
+}

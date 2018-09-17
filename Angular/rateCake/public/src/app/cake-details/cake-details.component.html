@@ -1,0 +1,13 @@
+<div class='wrapper'>
+  <h2 class='baker_name'>{{thisCakeDetails.baker}}</h2>
+  <div class='info'>
+    <img class='cake_image' [src]='thisCakeDetails.url' [alt]='thisCakeDetails.url'/>
+    <div class=comment_list>
+      <h3 class='stars_average'> Average rating: {{thisCakeDetails.ave_rating}} stars </h3>
+      <!-- <ul class='comment_list' *ngFor="let rating of thisCakeDetails.ratings"> -->
+      <ul class='comment_list' *ngFor="let rating of thisCakeDetails.ratings">
+        <li>{{rating.stars}} stars - {{rating.comment}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
