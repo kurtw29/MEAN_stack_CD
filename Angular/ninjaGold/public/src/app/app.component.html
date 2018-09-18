@@ -1,4 +1,38 @@
-<h1>Total Gold: {{score.gold}} </h1>
+<div class="container">
+  <h1>Total Gold: {{score.gold}} </h1>
+    <form (submit)="onSubmit()">
+    <label for='userName'>Username: </label>
+    <input type='type' name='userName' placeholder="Enter name to save.." [(ngModel)]="score.userName" />
+    <input type="hidden" name='score' [(ngModel)]="score.gold" />
+    <div *ngIf='score.userName.length > 0'>
+    <input type='submit' value='Save Game'/>
+    </div>
+    <p *ngIf='saved == 1'>*Successfully saved game!</p>
+    <p *ngIf='saved == 9'>*Unable to save game.</p>
+  </form>
+  <br>
+  <form (submit)="onLoad()">
+    <label for='userName'>Username: </label>
+    <input type='type' name='userName' placeholder="Enter name to load.." [(ngModel)]="score.userName" />
+    <div *ngIf='score.userName.length > 0'>
+    <input type='submit' value='Load Game'/>
+    </div>
+    <p *ngIf='loaded == 1'>*Successfully loaded game!</p>
+    <p *ngIf='loaded == 9'>*Unable to load game.</p>
+  </form>
+  
+</div>
+<button (click)="ngOnInit()">Reset Game</button>
+<div class='top_list'>
+  <h4>Top 5 players:</h4>
+  <ul *ngFor ="let player of players; let i = index">
+    <li>{{i+1}}. {{player.userName}} - {{player.gold}} gold</li>
+    <!-- <li>{{player[i].userName}} - {{player[i].gold}} gold</li>
+    <li>{{player[i].userName}} - {{player[i].gold}} gold</li>
+    <li>{{player[i].userName}} - {{player[i].gold}} gold</li>
+    <li>{{player[i].userName}} - {{player[i].gold}} gold</li> -->
+    </ul>
+</div>
 
 <div class="container">
 
@@ -28,7 +62,7 @@
 
 </div>
 
-<div>
+<div class='log'>
   <h2> Adventure log</h2>
   <ul *ngFor="let log of score.activities">
     <li>{{log}}</li>

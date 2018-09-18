@@ -7,23 +7,34 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
 
   constructor(private _http: HttpClient) {}
-  getGold() {
-    return this._http.get('/gold');
+  onSave(data){
+    console.log("service.ts / onSave() data: ", data)
+    return this._http.post('/save', data);
   }
-  clickFarm(data) {
-      console.log("service.ts / clickFarm(data), data: ",data)
-      return this._http.post('/farm', data);
+  Load(data){
+    console.log("service.ts / Load() data: ", data)
+    return this._http.post('/load', data);
   }
-  clickCave(data) {
-      console.log("service.ts / clickCave(data), data: ",data)
-      return this._http.post('/cave', data);
+  Top(){
+    return this._http.get('/top');
   }
-  clickHouse(data) {
-      console.log("service.ts / clickHouse(data), data: ",data)
-      return this._http.post('/house', data);
-  }
-  clickCasino(data) {
-      console.log("service.ts / clickCasino(data), data: ",data)
-      return this._http.post('/casino', data);
+//   getGold(data) {
+//     return this._http.post('/gold', data);
+//   }
+//   clickFarm(data) {
+//       console.log("service.ts / clickFarm(data), data: ",data)
+//       return this._http.post('/farm', data);
+//   }
+//   clickCave(data) {
+//       console.log("service.ts / clickCave(data), data: ",data)
+//       return this._http.post('/cave', data);
+//   }
+//   clickHouse(data) {
+//       console.log("service.ts / clickHouse(data), data: ",data)
+//       return this._http.post('/house', data);
+//   }
+//   clickCasino(data) {
+//       console.log("service.ts / clickCasino(data), data: ",data)
+//       return this._http.post('/casino', data);
   }
 }
