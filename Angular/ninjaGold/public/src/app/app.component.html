@@ -1,0 +1,37 @@
+<h1>Total Gold: {{score.gold}} </h1>
+
+<div class="container">
+
+  <div class="box"> 
+    <h2>Farm</h2>
+    <p>Earns 2-5 gold</p>
+    <button (click)=clickFarm()>Farm!</button>
+  </div>
+
+  <div class="box">
+    <h2>Cave</h2>
+    <p>Earns 5-10 gold</p>
+    <button (click)=clickCave()>Cave!</button>
+  </div>
+
+  <div class="box">
+    <h2>House</h2>
+    <p>Earns 7-15 gold</p>
+    <button (click)=clickHouse()>House!</button>
+  </div>
+
+  <div class="box">
+    <h2>Casino</h2>
+    <p>Earns or lose up to 100 gold</p>
+    <button (click)=clickCasino()>Casino!</button>
+  </div>
+
+</div>
+
+<div>
+  <h2> Adventure log</h2>
+  <ul *ngFor="let log of score.activities">
+    <li>{{log}}</li>
+  </ul>
+</div>
+
