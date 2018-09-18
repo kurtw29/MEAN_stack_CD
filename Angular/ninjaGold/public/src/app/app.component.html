@@ -2,7 +2,7 @@
   <h1>Total Gold: {{score.gold}} </h1>
     <form (submit)="onSubmit()">
     <label for='userName'>Username: </label>
-    <input type='type' name='userName' placeholder="Enter name to save.." [(ngModel)]="score.userName" />
+    <input type='type' name='userName' placeholder="Enter name to save/load.." [(ngModel)]="score.userName" />
     <input type="hidden" name='score' [(ngModel)]="score.gold" />
     <div *ngIf='score.userName.length > 0'>
     <input type='submit' value='Save Game'/>
@@ -12,8 +12,8 @@
   </form>
   <br>
   <form (submit)="onLoad()">
-    <label for='userName'>Username: </label>
-    <input type='type' name='userName' placeholder="Enter name to load.." [(ngModel)]="score.userName" />
+    <!-- <label for='userName'>Username: </label> -->
+    <input type='hidden' name='userName' placeholder="Enter name to load.." [(ngModel)]="score.userName" />
     <div *ngIf='score.userName.length > 0'>
     <input type='submit' value='Load Game'/>
     </div>

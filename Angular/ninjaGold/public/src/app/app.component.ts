@@ -45,6 +45,8 @@ export class AppComponent implements OnInit {
         this.score = data.data[0];
       }else{
         console.log("DID NOT FIND USER DATA: data:", data);
+        this.score = {gold: 0, activities: [], userName: "" };
+        this.ngOnInit();
         this.loaded = 9;
       }
     })

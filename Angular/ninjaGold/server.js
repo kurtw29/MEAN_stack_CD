@@ -20,10 +20,11 @@ app.post('/save', function(req, res){
     console.log('req.body info: ', req.body)
     Gold.find({userName:req.body.userName}, function(err, data){
         console.log("FINDING USERS: DATA, ",data, " and err: ", err)
-        if(err == null || data.length == 0){
+        if(err != null || data.length == 0){
             Gold.create(req.body, function(err, data){
                 console.log("USER NOT FOUND -> CREATING USER")
-                if(err != null){
+                if(err != null || data.length == 0){
+                    console.log("did not find user & unable to create new")
                     res.json({"message":false, data})
                 }else{
                     res.json({"message":true, data})
@@ -47,7 +48,7 @@ app.post('/load', function(req, res){
     console.log('req.body info: ', req.body);
     Gold.find({userName:req.body.userName}, function(err, data){
         console.log("FINDING USER: data: ",data, "Error: ",err);
-        if(err != null){
+        if(err != null || data.length == 0){
             res.json({"message":false, data})
         }else{
             res.json({"message": true, data})
