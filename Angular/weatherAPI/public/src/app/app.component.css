@@ -1,0 +1,22 @@
+*{
+    font-family: Helvetica, Arial, sans-serif
+}
+div.wrapper{
+    margin:20px 10px;
+}
+h1.title{
+    text-align:center;
+}
+
+div.link_wrapper{
+    text-align:center;
+    margin:20px;
+}
+a.city{
+    font-size:x-large;
+    padding:10px 10px;
+    border-right:5px solid black;
+}
+a.chicago{
+    border-right:none;
+}

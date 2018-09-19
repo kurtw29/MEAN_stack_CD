@@ -1,0 +1,11 @@
+<h1 class='city'>Seattle, WA</h1>
+<div class='weather_info'>
+    <ul>
+      <li>Humidity: {{weather.main.humidity}}</li>
+      <li>Temperature (Current): {{weather.main.temp}} F</li>
+      <li>Temperature (High): {{weather.main.temp_max}} F</li>
+      <li>Temperature (Low): {{weather.main.temp_min}} F</li>
+      <li>Status: {{weather.weather[0].description}}</li>
+    </ul>
+  </div>
+  <img style='height:400px; width:600px;' [src]='image_url' [alt] = 'image_url' />

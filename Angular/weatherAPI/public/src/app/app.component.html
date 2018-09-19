@@ -1,0 +1,15 @@
+<div class="container wrapper">
+  <h1 class='title'>Dojo Weather Forecast </h1>
+  <div class="container link_wrapper">
+    <a [routerLink] = "['/seattle']" class='city seattle'>Seattle WA</a>
+    <a [routerLink] = "['/sanjose']"class='city sanjsoe'>San Jose CA</a>
+    <a [routerLink] = "['/burbank']" class='city burbank'>Burbank CA</a>
+    <a [routerLink] = "['/dallas']" class='city dallas'>Dallas TX</a>
+    <a [routerLink] = "['/dc']" class='city dc'>Washington D.C.</a>
+    <a [routerLink] = "['/chicago']" class='city chicago'>Chicago IL</a>
+  </div>
+  <!-- redirecting via links -->
+  <!-- <button [routerLink] = "['/sanjose']">Load San Jose</button>
+  <button [routerLink] = "['/seattle']">Load Seattle</button> -->
+  <router-outlet></router-outlet>
+</div>
