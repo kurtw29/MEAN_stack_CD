@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Edit Product</h1>
+  <form (submit)="onSubmit()">
+    <label>Title</label>
+    <input type='text' name='editProduct.title' [value]="editProduct['title']" [(ngModel)]='editProduct.title' />
+    <p class='error' *ngIf="error['title']">{{error['title']['message']}}</p>
+    <br>
+    <label>Price</label>
+    <input type='number' name='editProduct.price' [value]="editProduct['price']" [(ngModel)]='editProduct.price' />
+    <p class='error' *ngIf="error['price']">{{error['price']['message']}}</p>
+    <br>
+    <label for='image_url'>Image Url</label>
+    <input type='text' name='editProduct.image_url' [value]='editProduct.image_url' [(ngModel)]='editProduct.image_url' />
+    <br>
+    <input class='btn btn-primary' type='submit' value='Edit!' />
+    <button class='btn btn-danger' (click)="delete(editProduct)">Delete</button>
+    <p *ngIf="success">{{success}}</p>
+    <p *ngIf="del_error">{{del_error}}</p>
+    <!-- <p>{{editProduct.title | json}} {{editProduct.price | json}}</p> -->
+  </form>
+</div>
+  

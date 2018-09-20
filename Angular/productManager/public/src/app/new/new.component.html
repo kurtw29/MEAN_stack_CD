@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Create a New Product</h1>
+  <form (submit)="onSubmit()">
+    <label>Title</label>
+    <input type='text' name='newProduct.title' [(ngModel)]='newProduct.title' />
+    <p class='error' *ngIf="error['title']">{{error['title']['message']}}</p>
+    <br>
+    <label>Price</label>
+    <input type='number' name='newProduct.price' [(ngModel)]='newProduct.price' />
+    <p class='error' *ngIf="error['price']">{{error['price']['message']}}</p>
+    <br>
+    <label for='image_url'>Image Url</label>
+    <input type='text' name='newProduct.image_url' [(ngModel)]='newProduct.image_url' />
+    <br>
+    <input type='submit' value='Create!' />
+    <p *ngIf="success">{{success}}</p>
+    <!-- <p>{{newProduct.title | json}} {{newProduct.price | json}}</p> -->
+  </form>
+</div>
+  
