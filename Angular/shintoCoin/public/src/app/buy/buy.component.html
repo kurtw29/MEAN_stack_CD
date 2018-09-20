@@ -1,0 +1,12 @@
+<div class='content'>
+  <h1>Buy ShintoCoins</h1>
+    <p class='coin_value'>Current ShintoCoin Value: ${{coin.value}}</p>
+    <p class='num_coin_own'>Number of ShintoCoin Owned: {{coin.owned}} ShintoCoin</p>
+  <form (submit)=buy()>
+  <input type='text' required maxlength='10' #buy='ngModel' name='buy_coin' placeholder='Number of ShintoCoin to buy..' [(ngModel)]='buy_coin' />
+  <input type='submit' value='Buy!' />
+  <br>
+  <label *ngIf="buy.errors" style='color:red;'>Empty</label>
+  <p class='response' *ngIf = "response">{{response}}</p>
+  </form>
+</div>

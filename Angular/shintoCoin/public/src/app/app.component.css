@@ -1,0 +1,25 @@
+div.heading{
+    margin-top:10%;
+}
+ul{
+    list-style: none;
+}
+img{
+    height:100px;
+    object-fit: contain;
+}
+li{
+    display:inline-block;
+    vertical-align: middle;
+}
+button{
+    width:150px;
+    height:50px;
+    text-align:center;
+    padding:5px 0px;
+    margin:10px;
+    background-color:blanchedalmond;
+    border-radius:10px;
+    font-size:large;
+    color:green;
+}

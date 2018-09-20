@@ -1,0 +1,22 @@
+div.content{
+    margin-left:5%;
+}
+p{
+    font-size:large;
+}
+input[type=number]{
+    height: 25px;
+    border-radius: 5px;
+    width: 200px;
+    margin-right:5px;
+    padding: 0px 5px;
+}
+input[type=submit]{
+    height: 30px;
+    width: 70px;
+    border-radius: 10px;
+    background-color:lightpink;
+}
+p.response{
+    color:purple;
+}

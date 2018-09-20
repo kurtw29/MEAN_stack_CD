@@ -1,0 +1,12 @@
+<div class='content'>
+    <h1>Mine ShintoCoins</h1>
+      <p class='text'>
+        Here you can mine shintocoins by being the first to solve the algorithm:
+      </p>
+    <label>What is the 7th Fibonacci sequence number?</label>
+    <form (submit)=mine()>
+    <input type='number' name='answer' [(ngModel)]='answer' />
+    <input type='submit' value='Mine!' />
+    <p class='response' *ngIf = "response">{{response}}</p>
+    </form>
+</div>

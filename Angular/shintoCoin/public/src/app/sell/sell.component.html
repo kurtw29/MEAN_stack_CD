@@ -1,0 +1,12 @@
+<div class='content'>
+  <h1>Sell ShintoCoins</h1>
+    <p class='coin_value'>Current ShintoCoin Value: ${{coin.value}}</p>
+    <p class='num_coin_own'>Number of ShintoCoin Owned: {{coin.owned}} ShintoCoin</p>
+  <form (submit)=sell()>
+  <input type='text' required maxlength='10' #sell='ngModel' name='sell_coin' placeholder='Number of ShintoCoin to sell..' [(ngModel)]='sell_coin' />
+  <input type='submit' value='Sell!' />
+  <br>
+  <label *ngIf="sell.errors" style='color:red;'>Empty</label>
+  <p class='response' *ngIf = "response">{{response}}</p>
+  </form>
+</div>
