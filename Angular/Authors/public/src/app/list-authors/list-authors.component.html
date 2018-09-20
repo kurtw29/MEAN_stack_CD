@@ -1,0 +1,24 @@
+<div class="container">
+  <a [routerLink] = "['new']">Add an author </a>
+  <p *ngIf='error'>{{error}}</p>
+  <p> List of authors: </p>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th scope='col'>Author</th>
+        <th scope='col'>Actions available</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let author of authors'>
+        <td>
+          {{author.name}}
+        </td>
+        <td>
+          <button [routerLink]="['edit', author._id]">Edit</button> <button (click)="delete(author._id)">Delete</button>
+          <p *ngIf="delete_msg">{{delte_msg}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

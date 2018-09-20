@@ -1,0 +1,14 @@
+<div class="container">
+    <a [routerLink] = "['']">Home </a>
+    <p> Edit this author:</p>
+    <form (submit)='update()'>
+        <label>Name:</label>
+        <input name='name' [(ngModel)]='author.name' />
+        <input type='submit' value='Submit' />
+        <button type='button'><a [routerLink] = "['']">Cancel</a></button>
+        <p class='update_msg' *ngIf='update_msg'>{{update_msg}}</p>
+        <p class='error' *ngIf='error'>{{error}}</p>
+    </form>
+
+
+</div>
